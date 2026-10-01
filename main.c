@@ -108,7 +108,7 @@ LevelHeader NewLevel(int xdim, int ydim, int zdim) {
     newmap.CollisionOffset += 128;
     newmap.RenderOffset = newmap.CollisionOffset + 64 + 0x000FFFFF; // 64 is for padding
     newmap.totalmapsize = newmap.RenderOffset + newmap.CollisionOffset;
-    newmap.map_OffsetAddr = VirtualAlloc(NULL, newmap.totalmapsize, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE)
+    newmap.map_OffsetAddr = VirtualAlloc(NULL, newmap.totalmapsize, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
     return newmap;
 
 
