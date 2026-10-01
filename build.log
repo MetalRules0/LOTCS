@@ -1,0 +1,5 @@
+ Assembling: Power3d.asm
+\Metal\level\common.asm(205) : error A2005: symbol redefinition : targetYPos
+Metal\render\software\Graphics.asm(198) : error A2006: undefined symbol : GetSize_zero
+Metal\render\software\pixel.asm(16) : error A2022: instruction operands must be the same size
+Metal\render\software\pixel.asm(33) : error A2022: instruction operands must be the same size
