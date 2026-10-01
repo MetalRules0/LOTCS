@@ -90,7 +90,7 @@ int Draw_backround(int color) {
 void AddRenderPlane(LevelHeader *finalmap, RenderTile *ntile, int index) {
 
     int spot = index * sizeof(RenderTile);
-    int *addptr = finalmap->map_OffsetAddr + finalmap->RenderOffset + spot;
+    int *addptr = (int*)(finalmap->map_OffsetAddr + finalmap->RenderOffset + spot);
     memcpy(addptr, ntile, sizeof(RenderTile));
     return;
     
@@ -154,8 +154,11 @@ void videoloop() {
     WirePolygon k;
     WirePolygon h;
     
-    plane = gym.map_OffsetAddr + gym.RenderOffset;
-    const char *k = plane;
+    //plane = gym.map_OffsetAddr + gym.RenderOffset;
+    //plane is a RenderTile, not a pointer or int. What is this code *supposed* to achieve?
+
+    //const char *k = plane;
+    //k is defined twice here? What is the purpose of this? It doesn't even get used.
     
     Draw_backround(SKYCOLOR);
 
@@ -165,8 +168,8 @@ void videoloop() {
         // use wireframes
         if (videomode == 1) {
 
-            Normalise_Tile(&);
-
+            //Normalise_Tile(&);
+            //This function does not exist.
 
         } else {
 
@@ -384,7 +387,4 @@ int main() {
     // function 3 is only called when the debug menu option is selected
     StartGame();
     return 1;
-
 }
-
-

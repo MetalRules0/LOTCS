@@ -207,7 +207,7 @@ typedef struct {
 	float width;
 	float height;
 	float depth;
-	int map_OffsetAddr;
+	int* map_OffsetAddr;
 
 
 } LevelHeader;
