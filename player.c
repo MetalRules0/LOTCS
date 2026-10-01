@@ -23,11 +23,11 @@ void MovePlayer_xyz(Player *ps, LevelHeader *map) {
 	 newpos.y = ps->y + ps->Ymot;
 	 newpos.z = ps->z + ps->Zmot;	
 	 
-	 geoptr = map->map_OffsetAddr + map->CollisionOffset;
+	 geoptr = (int*)(map->map_OffsetAddr + map->CollisionOffset);
 
 	 
 	 // getPlayerAABB(&newplayerbb, nx, ny, nz);
-	 for (unsigned int i = map->CollisionSize; i != 0; i--;) {
+	 for (unsigned int i = map->CollisionSize; i != 0; i--) {
 	 
      // AABB data gets overwritten every time a new tile is called so it doesn't really matter that much
      
@@ -87,8 +87,8 @@ void MovePlayer_xyz(Player *ps, LevelHeader *map) {
 //done
 void TurnPlayer(Player *ps, float xamount, float yamount, float maxpitch, float minpitch) {
 	
-	 ps->yRot += xamount * 0.15f;
-	 ps->xRot += yamount * 0.15f;
+	 ps->yrot += xamount * 0.15f;
+	 ps->xrot += yamount * 0.15f;
 	 
 	 if (ps->xrot > maxpitch) {
 	 	

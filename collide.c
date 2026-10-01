@@ -80,6 +80,7 @@ Vec3f getAABBClip(AABB *a, AABB *b) {
       
 }
 
+/* AABB -> max/min X/Y/Z do NOT exist. What is this code referencing?
 float AABB_clipXCollide(const AABB* a, const AABB* b, float x) {
     if (b->maxY <= a->minY || b->minY >= a->maxY) return x;
     if (b->maxZ <= a->minZ || b->minZ >= a->maxZ) return x;
@@ -124,5 +125,5 @@ float AABB_clipZCollide(const AABB* a, const AABB* b, float z) {
     }
     return z;
 }
-
+*/
 

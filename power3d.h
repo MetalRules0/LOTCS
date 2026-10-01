@@ -125,9 +125,9 @@ typedef struct {
 	short viewStartY;
 	float nearClip;
 	float farClip;
-	float vfov
+	float vfov;
 
-}CameraInitData;
+} CameraInitData;
 
 typedef struct {
 

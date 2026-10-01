@@ -6,8 +6,8 @@
 #include <memoryapi.h>
 #include "power3d.h"
 #include "matrix4x4.h" 
-#include "COLISION.C" //done
-#include "PLAYER.C" //done
+// We don't have this file, whatever it may be. #include "COLISION.C" //done
+#include "player.c" //done
 #include "Camera.c" //done
 #include "polygon.c" // working on it
 
@@ -75,9 +75,9 @@ void Render_scene(LevelHeader *map) {
 int Draw_backround(int color) {
 
     // set up the loop for the scan lines
-    for (int j = 0; j < SCREEN_HEIGHT; j++;) {
+    for (int j = 0; j < SCREEN_HEIGHT; j++) {
     // draw a scan line
-        for (int i = 0; i < SCREEN_WIDTH; i++;) {
+        for (int i = 0; i < SCREEN_WIDTH; i++) {
             // set the pixel on the screen of the desired color
             _SetPixel(i, j, color);
 
