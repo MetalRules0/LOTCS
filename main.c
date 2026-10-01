@@ -207,7 +207,7 @@ int main() {
 
     tile_to_add.a.x = 256.0f;
     tile_to_add.a.y = 26.0f;
-    tile_to_add.a.z = -256.0f
+    tile_to_add.a.z = -256.0f;
 
     tile_to_add.b.x = 256.0f;
     tile_to_add.b.y = 26.0f;
@@ -224,7 +224,7 @@ int main() {
 
     tile_to_add.a.x = -256.0f;
     tile_to_add.a.y = 26.0f;
-    tile_to_add.a.z = 256.0f
+    tile_to_add.a.z = 256.0f;
 
     tile_to_add.b.x = -256.0f;
     tile_to_add.b.y = 26.0f;
@@ -241,7 +241,7 @@ int main() {
 
     tile_to_add.a.x = 256.0f;
     tile_to_add.a.y = 26.0f;
-    tile_to_add.a.z = -256.0f
+    tile_to_add.a.z = -256.0f;
 
     tile_to_add.b.x = 256.0f;
     tile_to_add.b.y = 64.0f;
@@ -258,7 +258,7 @@ int main() {
 
     tile_to_add.a.x = 256.0f;
     tile_to_add.a.y = 64.0f;
-    tile_to_add.a.z = -256.0f
+    tile_to_add.a.z = -256.0f;
 
     tile_to_add.b.x = 256.0f;
     tile_to_add.b.y = 64.0f;
@@ -275,7 +275,7 @@ int main() {
 
     tile_to_add.a.x = 256.0f;
     tile_to_add.a.y = 26.0f;
-    tile_to_add.a.z = 256.0f
+    tile_to_add.a.z = 256.0f;
 
     tile_to_add.b.x = 256.0f;
     tile_to_add.b.y = 64.0f;
@@ -292,7 +292,7 @@ int main() {
 
     tile_to_add.a.x = 256.0f;
     tile_to_add.a.y = 26.0f;
-    tile_to_add.a.z = 256.0f
+    tile_to_add.a.z = 256.0f;
 
     tile_to_add.b.x = 256.0f;
     tile_to_add.b.y = 26.0f;
@@ -309,7 +309,7 @@ int main() {
 
     tile_to_add.a.x = -256.0f;
     tile_to_add.a.y = 26.0f;
-    tile_to_add.a.z = -256.0f
+    tile_to_add.a.z = -256.0f;
 
     tile_to_add.b.x = 256.0f;
     tile_to_add.b.y = 26.0f;
@@ -326,7 +326,7 @@ int main() {
 
     tile_to_add.a.x = -256.0f;
     tile_to_add.a.y = 26.0f;
-    tile_to_add.a.z = -256.0f
+    tile_to_add.a.z = -256.0f;
 
     tile_to_add.b.x = -256.0f;
     tile_to_add.b.y = 64.0f;
@@ -343,7 +343,7 @@ int main() {
 
     tile_to_add.a.x = -256.0f;
     tile_to_add.a.y = 26.0f;
-    tile_to_add.a.z = 256.0f
+    tile_to_add.a.z = 256.0f;
 
     tile_to_add.b.x = -256.0f;
     tile_to_add.b.y = 64.0f;
@@ -360,7 +360,7 @@ int main() {
 
     tile_to_add.a.x = -256.0f;
     tile_to_add.a.y = 64.0f;
-    tile_to_add.a.z = -256.0f
+    tile_to_add.a.z = -256.0f;
 
     tile_to_add.b.x = 256.0f;
     tile_to_add.b.y = 64.0f;
