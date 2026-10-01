@@ -77,7 +77,7 @@ int update_camera (Camera *camptr, Player *pdata) {
     camptr->pos.z = pdata->z;
     
     camptr->rot.x = pdata->xrot;
-    camptr->rot.x = pdata->yrot;
+    camptr->rot.y = pdata->yrot;
 
     if (camptr->flags & CAMERA_UPDATE_CALCULATE == CAMERA_UPDATE_CALCULATE) {
 
