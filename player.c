@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "power3d.h"
-#include "collide.c"
-#include "matrix4x4.h"
+#include "collide.h"
 
 
 //done

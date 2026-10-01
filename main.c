@@ -5,8 +5,6 @@
 #include <math.h>
 #include <memoryapi.h>
 #include "power3d.h"
-#include "matrix4x4.h" 
-#include "collide.c" // i renamed the file; Metal
 #include "player.c" //done
 #include "Camera.c" //done
 #include "polygon.c" // working on it
