@@ -240,3 +240,6 @@ POWERX3D int __stdcall _GetDisplay();
 
 
 #endif
+
+// Add vec2_t definition
+typedef Vec2f vec2_t;
