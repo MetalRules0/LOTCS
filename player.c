@@ -82,7 +82,7 @@ void MovePlayer_xyz(Player *ps, LevelHeader *map) {
 	
 	  
 }
-
+}
 //done
 void TurnPlayer(Player *ps, float xamount, float yamount, float maxpitch, float minpitch) {
 	
