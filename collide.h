@@ -11,7 +11,7 @@ void RegisterCollisionTile(AABB *newtile, COLLISIONTILE *oldtile) {
 	float y;
 		
 	// floor collision	
- 	if (oldtile->flags & 0x0007 = 1)  {
+ 	if ((oldtile->flags & 0x0007) == 1)  {
  		
  		newtile->y0 = oldtile->ypos;
 		newtile->y1 = oldtile->ypos;
@@ -21,7 +21,7 @@ void RegisterCollisionTile(AABB *newtile, COLLISIONTILE *oldtile) {
 		newtile->z1 = oldtile->zpos + (oldtile->zsize / 2);		
  		return; 
  		
-	} else if (oldtile->flags & 0x0007 = 2) {
+	} else if ((oldtile->flags & 0x0007) == 2) {
 		
 		newtile->x0 = oldtile->xpos;
 		newtile->x1 = oldtile->xpos;
@@ -32,7 +32,7 @@ void RegisterCollisionTile(AABB *newtile, COLLISIONTILE *oldtile) {
 		return;
 		
 		
-	} else if (oldtile->flags & 0x0007 = 3) {
+	} else if ((oldtile->flags & 0x0007) == 3) {
 		
 		newtile->z0 = oldtile->zpos;
 		newtile->z1 = oldtile->zpos;
