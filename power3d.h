@@ -243,3 +243,8 @@ POWERX3D int __stdcall _GetDisplay();
 
 // Add vec2_t definition
 typedef Vec2f vec2_t;
+
+typedef struct {
+    float u;
+    float v;
+} tex2_t;
