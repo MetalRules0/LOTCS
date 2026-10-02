@@ -248,3 +248,8 @@ typedef struct {
     float u;
     float v;
 } tex2_t;
+
+typedef struct {
+    vec4_t points[3];
+    tex2_t texcoords[3];
+} triangle_t;
