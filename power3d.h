@@ -253,3 +253,5 @@ typedef struct {
     vec4_t points[3];
     tex2_t texcoords[3];
 } triangle_t;
+
+#define NUM_PLANES 6
