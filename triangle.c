@@ -224,7 +224,7 @@ void draw_triangle_pixel(short x, short y, uint32_t color, vec4_t point_a, vec4_
         // Update the z-buffer value with the 1/w of this current pixel
         z_buffer[(SCREEN_WIDTH * y) + x] = interpolated_reciprocal_w;
     }
-
+}
 void draw_filled_triangle( short x0, short y0, float z0, float w0, short x1, short y1, float z1, float w1, short x2, short y2, float z2, float w2, uint32_t color) {
     // We need to sort the vertices by y-coordinate ascending (y0 < y1 < y2)
     if (y0 > y1) {
