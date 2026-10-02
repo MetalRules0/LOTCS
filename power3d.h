@@ -255,3 +255,5 @@ typedef struct {
 } triangle_t;
 
 #define NUM_PLANES 6
+
+typedef Mat4f mat4f;
