@@ -87,12 +87,12 @@ int update_camera (Camera *camptr, Player *pdata) {
 
     } 
     
-    cp = cosf(cam_out->rot.x);
-    sp = sinf(cam_out->rot.x);
-    cy = cosf(cam_out->rot.y);
-    sy = sinf(cam_out->rot.y);
-    cr = cosf(cam_out->rot.z);
-    sr = sinf(cam_out->rot.z);
+    cp = cosf(camptr->rot.x);
+    sp = sinf(camptr->rot.x);
+    cy = cosf(camptr->rot.y);
+    sy = sinf(camptr->rot.y);
+    cr = cosf(camptr->rot.z);
+    sr = sinf(camptr->rot.z);
 
     camptr->CameraControlMatrix.x0 = cy * cr + sy * sp * sr;
     camptr->CameraControlMatrix.y0 = sr * cp;
