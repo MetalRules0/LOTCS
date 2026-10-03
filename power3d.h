@@ -176,7 +176,7 @@ typedef struct {
 	uint32_t modelTreeRoot;
 	uint32_t hitAssetCollisionoffset;
     uint32_t hitAssetZoneOffset;
-	LPVOID totalmapsize;
+	void *totalmapsize;
 	uint32_t main;
 	uint32_t entryList;
 	int entrycount;
@@ -239,7 +239,6 @@ POWERX3D int __stdcall _GetDisplay();
 */
 
 
-#endif
 
 // Add vec2_t definition
 typedef Vec2f vec2_t;
@@ -257,3 +256,5 @@ typedef struct {
 #define NUM_PLANES 6
 
 typedef Mat4f mat4f;
+
+#endif
