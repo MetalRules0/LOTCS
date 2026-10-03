@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include "power3d.h"
 
-void RegisterCollisionTile(AABB *newtile, COLLISIONTILE *oldtile) {
+void RegisterCollisionTile(AABB *newtile, CollisionTile *oldtile) {
 	
 	float i;
 	float j;
