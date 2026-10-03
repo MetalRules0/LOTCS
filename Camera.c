@@ -81,8 +81,8 @@ int update_camera (Camera *camptr, Player *pdata) {
 
     if ((camptr->flags & CAMERA_UPDATE_CALCULATE) == CAMERA_UPDATE_CALCULATE) {
 
-        camptr->rot.x = asinf(pdata->yd);
-        camptr->rot.y = atan2f(pdata->xd, pdata->zd);
+        camptr->rot.x = asinf(pdata->Ymot);
+        camptr->rot.y = atan2f(pdata->Xmot, pdata->Zmot);
 
 
     } 
