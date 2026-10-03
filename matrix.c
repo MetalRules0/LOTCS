@@ -1,6 +1,6 @@
 #include <math.h>
 
-//#include "matrix.h" hmmmm
+#include "power3d.h"
 #include "stdio.h"
 
 mat4f mat4_identity(void) {
