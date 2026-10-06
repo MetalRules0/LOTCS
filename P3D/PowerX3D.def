@@ -1,0 +1,9 @@
+LIBRARY PowerX3D
+EXPORTS StartGame
+EXPORTS SetCoreProc
+EXPORTS _Timer_new
+EXPORTS _UpdateTimer
+EXPORTS _IncrementTimer
+EXPORTS _DrawLine
+EXPORTS _SetPixel
+EXPORTS _DrawWirePolygon
