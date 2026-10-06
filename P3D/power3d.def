@@ -1,4 +1,4 @@
-LIBRARY PowerX3D
+LIBRARY power3d
 EXPORTS StartGame
 EXPORTS SetCoreProc
 EXPORTS _Timer_new
