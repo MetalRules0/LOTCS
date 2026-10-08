@@ -212,7 +212,7 @@ typedef struct {
 
 } LevelHeader;
 
-
+/*
 extern void  StartGame();
 extern int  SetCoreProc(uint32_t funcptr, char type);
 extern void  _Timer_new(int TPS);
@@ -222,22 +222,18 @@ extern int  _CheckIfReady();
 extern void  _DrawLine(short x0, short y0, short x1, short y1, uint32_t color, uint32_t vbuffer);
 extern void  _DrawWirePolygon(int polygonptr);
 extern void  _SetPixel(short x, short y, uint32_t color, uint32_t scrbuf);
-extern char _iskeydown(short lkey);
-
-
-/*
-POWERX3D void __stdcall StartGame();
-POWERX3D int __stdcall SetCoreProc(uint32_t funcptr, char type);
-POWERX3D void __stdcall _Timer_new(int TPS);
-POWERX3D void __stdcall _UpdateTimer();
-POWERX3D void __stdcall _IncrementTimer();
-POWERX3D int __stdcall _CheckIfReady();
-POWERX3D void __stdcall _DrawLine(short x0, short y0, short x1, short y1, uint32_t color, uint32_t vbuffer);
-//POWERX3D void __stdcall _DrawWirePolygon(int polygonptr);
-POWERX3D void __stdcall _SetPixel(short x, short y, uint32_t color, uint32_t scrbuf);
-POWERX3D int __stdcall _GetDisplay();
 */
 
+
+__declspec(dllimport) void __stdcall StartGame();
+__declspec(dllimport) int __stdcall SetCoreProc(uint32_t funcptr, char type);
+__declspec(dllimport) void __stdcall _Timer_new(int TPS);
+__declspec(dllimport) void __stdcall _UpdateTimer();
+__declspec(dllimport) void __stdcall _IncrementTimer();
+__declspec(dllimport) int __stdcall _CheckIfReady();
+__declspec(dllimport) void __stdcall _DrawLine(short x0, short y0, short x1, short y1, uint32_t color, uint32_t vbuffer);
+//POWERX3D void __stdcall _DrawWirePolygon(int polygonptr);
+__declspec(dllimport) void __stdcall _SetPixel(short x, short y, uint32_t color, uint32_t scrbuf);
 
 
 // Add vec2_t definition
