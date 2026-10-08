@@ -87,8 +87,9 @@ int Draw_backround(int color) {
 
 void AddRenderPlane(LevelHeader *finalmap, RenderTile *ntile, int index) {
 
-    int spot = index * sizeof(RenderTile);
-    int *addptr = (int*)(finalmap->map_OffsetAddr + finalmap->RenderOffset + spot);
+    int spot = index * (int)sizeof(RenderTile);
+    unsigned char *base = (unsigned char *)finalmap->map_OffsetAddr;
+    RenderTile *addptr = (RenderTile *)(base + finalmap->RenderOffset + spot);
     memcpy(addptr, ntile, sizeof(RenderTile));
     return;
     
@@ -105,7 +106,9 @@ LevelHeader NewLevel(int xdim, int ydim, int zdim) {
     newmap.CollisionOffset = xdim * ydim * 32;
     newmap.CollisionOffset += 128;
     newmap.RenderOffset = newmap.CollisionOffset + 64 + 0x000FFFFF; // 64 is for padding
-    newmap.totalmapsize = newmap.RenderOffset + newmap.CollisionOffset;
+    newmap.CollisionSize = 0;
+    newmap.RenderSize = 11;
+    newmap.totalmapsize = newmap.RenderOffset + newmap.RenderSize * (int)sizeof(RenderTile);
     newmap.map_OffsetAddr = VirtualAlloc(NULL, newmap.totalmapsize, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
     return newmap;
 
@@ -139,55 +142,70 @@ void gameloop() {
 
 }
 
+static int ProjectPoint(const Vec3f *world, const Camera *cam, Vec2s *screen) {
+    float dx = world->x - cam->pos.x;
+    float dy = world->y - cam->pos.y;
+    float dz = world->z - cam->pos.z;
+    float cp = cosf(cam->rot.x);
+    float sp = sinf(cam->rot.x);
+    float cy = cosf(cam->rot.y);
+    float sy = sinf(cam->rot.y);
+
+    float camx = cy * dx - sy * dz;
+    float camz = sy * dx + cy * dz;
+    float camy = cp * dy - sp * camz;
+    camz = sp * dy + cp * camz;
+
+    if (camz <= 0.01f) return 0;
+
+    float vfov = cam->vfov;
+    if (vfov <= 1.0f || vfov >= 179.0f) vfov = 80.0f;
+
+    float fovrad = vfov * 0.5f * 0.01745329251994329577f;
+    float focal = ((float)SCREEN_HEIGHT * 0.5f) / tanf(fovrad);
+
+    int sx = (int)((float)SCREEN_WIDTH * 0.5f + camx * focal / camz);
+    int sy_screen = (int)((float)SCREEN_HEIGHT * 0.5f - camy * focal / camz);
+
+    if (sx < -32768) sx = -32768;
+    if (sx > 32767) sx = 32767;
+    if (sy_screen < -32768) sy_screen = -32768;
+    if (sy_screen > 32767) sy_screen = 32767;
+
+    screen->x = (short)sx;
+    screen->y = (short)sy_screen;
+    return 1;
+}
+
 void videoloop() {
-    
-    // set up proper pointers
-    return; // NOT WORKING BUT STILL NEEDS TESTING
-    
-    int i;
-    int j;
-
-
-    RenderTile *plane;
-    WirePolygon k;
-    WirePolygon h;
-    
-    //plane = gym.map_OffsetAddr + gym.RenderOffset;
-    //plane is a RenderTile, not a pointer or int. What is this code *supposed* to achieve?
-
-    //const char *k = plane;
-    //k is defined twice here? What is the purpose of this? It doesn't even get used.
-    
     Draw_backround(SKYCOLOR);
 
-    // make a loop that first obtains the specs for the amount of render tiles
-    for (int i = 0; i > gym.RenderSize; i++) {
+    unsigned char *base = (unsigned char *)gym.map_OffsetAddr;
+    RenderTile *planes = (RenderTile *)(base + gym.RenderOffset);
 
-        // use wireframes
-        if (videomode == 1) {
+    for (int i = 0; i < gym.RenderSize; i++) {
+        RenderTile *tile = &planes[i];
+        Vec3f vertices[3] = { tile->a, tile->b, tile->c };
+        Vec2s projected[3];
+        int visible = 1;
 
-            //Normalise_Tile(&);
-            //This function does not exist.
-
-        } else {
-
-            
-
+        for (int v = 0; v < 3; v++) {
+            if (!ProjectPoint(&vertices[v], &viewport, &projected[v])) {
+                visible = 0;
+                break;
+            }
         }
 
-    // obtain a render tile
+        if (!visible) continue;
 
+        WirePolygon poly;
+        poly.color = tile->color;
+        poly.a = projected[0];
+        poly.b = projected[1];
+        poly.c = projected[2];
 
-    // while in that loop, normalise, filter and convert them for rendering in a loop each time its called
-
-
-    // apply extra transformations
-
-    
-    // convert them to screen corrdinates and render the polygon
+        _DrawWirePolygon((uint32_t)&poly);
     }
-    return;
-
 }
 
 int main() {
