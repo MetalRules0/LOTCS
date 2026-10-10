@@ -1,5 +1,5 @@
 #include <math.h>
-#include "vector.h"
+#include "power3d.h"
 
 // Implementations of Vector 2D functions
 float vec2_length(Vec2f v) {
