@@ -12,7 +12,7 @@ shl edx, 2
 add ebx, edx
 add ebx, eax
 mov edx, color
-mov DWORD ptr [ebx], edx
+mov DWORD PTR [ebx], edx
 pop edx
 pop ebx
 pop esi
