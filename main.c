@@ -378,15 +378,15 @@ int main() {
     AddRenderPlane(&gym, &tile_to_add, 9);
 
     tile_to_add.a.x = -256.0f;
-    tile_to_add.a.y = 64.0f;
-    tile_to_add.a.z = -256.0f;
+    tile_to_add.a.y = 26.0f;
+    tile_to_add.a.z = 256.0f;
 
-    tile_to_add.b.x = 256.0f;
+    tile_to_add.b.x = -256.0f;
     tile_to_add.b.y = 64.0f;
-    tile_to_add.b.z = -256.0f;
+    tile_to_add.b.z = 256.0f;
 
-    tile_to_add.c.x = 256.0f;
-    tile_to_add.c.y = 26.0f;
+    tile_to_add.c.x = -256.0f;
+    tile_to_add.c.y = 64.0f;
     tile_to_add.c.z = -256.0f;
 
     tile_to_add.color = WALLCOLOR;
