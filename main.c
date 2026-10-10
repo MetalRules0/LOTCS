@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <math.h>
-#include <memoryapi.h>
+#include <windows.h>
 #include "power3d.h"
 #include "player.c" //done
 #include "Camera.c" //done
