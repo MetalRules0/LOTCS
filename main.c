@@ -63,7 +63,7 @@ char videomode;
 */
 
 // done
-void Render_scene(LevelHeader *map) {
+void Render_scene(__attribute__((unused))LevelHeader *map) {
 
     
 

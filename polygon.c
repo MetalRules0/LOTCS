@@ -19,27 +19,20 @@ float edge_cross(Vec2f* a, Vec2f* b, Vec2f* p) {
 
 void draw_pixel(float x, float y, int c) {
 
-  short nx, ny;
+  short nx = 0, ny = 0;
 
   if (y < 1.0f && y > -1.0f) {
-
-        if (y < -x) {
-
-            nx = (x * SCREEN_WIDTH);
-
-            ny = (y * SCREEN_HEIGHT);
-
-        }
-
+		if (y < -x) {
+			nx = (x * SCREEN_WIDTH);
+			ny = (y * SCREEN_HEIGHT);
+		}
   }
 
   _SetPixel(nx, ny, c);
 
 }
 
-void draw_right_triangle(short x, short y, signed short slope, short height) {
-
-  
-
+void draw_right_triangle(short x, short y, __attribute__((unused))signed short slope, __attribute__((unused))short height) {
+	draw_pixel(x, y, 0); /* Todo: actual proper triangle drawing */
 }
 
