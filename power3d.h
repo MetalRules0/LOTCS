@@ -153,23 +153,6 @@ typedef struct {
 
 } AABB;
 
-typedef struct {
-
-	float PrevX;
-	float PrevY;
-	float PrevZ;
-	float x;
-	float y;
-	float z;
-	float Xmot;
-	float Ymot;
-	float Zmot;
-	float xrot;
-	float yrot;
-	AABB bb;
-	int misc;
-
-} Player;
 
 typedef struct {
 
