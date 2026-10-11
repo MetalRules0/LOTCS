@@ -75,21 +75,6 @@ typedef struct {
 
 } Mat4f, mat4_t;
 
-typedef struct {
-
-	uint8_t flags;
-	uint8_t other;
-	uint16_t zrot;
-	uint32_t ReactProc;
-	float xpos;
-	float ypos;
-	float zpos;
-	float xsize;
-	float zsize;
-	float xrot;
-	
-
-} CollisionTile;
 
 typedef struct {
 
@@ -112,8 +97,6 @@ typedef struct {
 
 } RenderTile; // total size = 0x40 bytes
 
-
-
 typedef struct {
 
 	uint16_t flags;
@@ -129,18 +112,7 @@ typedef struct {
 
 } CameraInitData;
 
-typedef struct {
 
-	Vec3f pos;
-	Vec3f rot;
-	float vfov;
-	uint16_t flags;
-	float Pitch;
-	float Yaw;
-	CameraInitData Config;
-	Mat4f CameraControlMatrix;
-
-}Camera;
 
 typedef struct {
 
