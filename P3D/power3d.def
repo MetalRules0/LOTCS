@@ -7,3 +7,4 @@ EXPORTS _IncrementTimer
 EXPORTS _DrawLine
 EXPORTS _SetPixel
 EXPORTS _DrawWirePolygon
+EXPORTS _iskeydown

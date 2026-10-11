@@ -209,13 +209,14 @@ extern void  _SetPixel(short x, short y, uint32_t color, uint32_t scrbuf);
 
 
 __declspec(dllimport) void __stdcall StartGame();
-__declspec(dllimport) int __stdcall SetCoreProc(uint32_t funcptr, char type);
+__declspec(dllimport) int __stdcall SetCoreProc(void (*funcptr)(), char type);
 __declspec(dllimport) void __stdcall _Timer_new(int TPS);
 __declspec(dllimport) void __stdcall _UpdateTimer();
 __declspec(dllimport) void __stdcall _IncrementTimer();
 __declspec(dllimport) int __stdcall _CheckIfReady();
 __declspec(dllimport) void __stdcall _DrawLine(short x0, short y0, short x1, short y1, uint32_t color, uint32_t vbuffer);
 //POWERX3D void __stdcall _DrawWirePolygon(int polygonptr);
+__declspec(dllimport) void __stdcall _DrawWirePolygon(int polygonptr);
 __declspec(dllimport) void __stdcall _SetPixel(short x, short y, uint32_t color);
 
 
