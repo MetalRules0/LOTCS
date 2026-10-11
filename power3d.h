@@ -218,6 +218,7 @@ __declspec(dllimport) void __stdcall _DrawLine(short x0, short y0, short x1, sho
 //POWERX3D void __stdcall _DrawWirePolygon(int polygonptr);
 __declspec(dllimport) void __stdcall _DrawWirePolygon(int polygonptr);
 __declspec(dllimport) void __stdcall _SetPixel(short x, short y, uint32_t color);
+__declspec(dllimport) int __stdcall _iskeydown(int key);
 
 
 // Add vec2_t definition
