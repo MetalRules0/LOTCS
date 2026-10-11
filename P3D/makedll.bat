@@ -2,10 +2,11 @@
 title Power3D build script
 echo Power3D build process START!
 echo Cleaning files...
-del /q build.log power3d.obj power3d.dll power3d.exp power3d.lib rsrc.res
+del /q build.log power3d.obj power3d.dll power3d.exp power3d.lib power3d.a rsrc.res
 pause
+echo.
+echo.
 
-cls
 echo Assembling source...
 C:\masm32\bin\rc /r rsrc.rc
 C:\masm32\bin\ml /c /coff /Cp power3d.asm
