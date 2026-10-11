@@ -1,7 +1,7 @@
-#include "camera.h"
-#include <math.h>
-#include <stdint.h>
-#include "power3d.h"
+#include "camera.h" // for the header
+#include <math.h> // must be in the c file because of function use
+
+// make sure to only include them once
 
 
 int make_camera(Camera *cam_out, CameraInitData *camDataPtr, Player *playerDataPtr) {
