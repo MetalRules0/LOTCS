@@ -6,7 +6,7 @@
 #include <windows.h>
 #include "power3d.h"
 #include "player.c" //done
-#include "Camera.c" //done
+#include "camera.c" //done
 #include "polygon.c" // working on it
 
 Player playerdata;

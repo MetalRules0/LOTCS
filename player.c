@@ -7,12 +7,8 @@
 
 void MovePlayer_xyz(Player *ps, LevelHeader *map) {
 
-	float nx;
-	float ny;
-	float nz;
 	AABB tilebox;
 	Vec3f newpos;
-	AABB newplayerbb;
 	 
 	CollisionTile *geoptr;
 	 
@@ -71,18 +67,14 @@ void TurnPlayer(Player *ps, float xamount, float yamount, float maxpitch, float 
 
 void MovePlayer_Relative(Player *ps, float x, float z, float speed) {
     float d2 = x * x + z * z;
-    if (d2 < 0.01f)
-        return; 
-	{
-        float k = speed / sqrtf(d2);
-        x *= k;
-        z *= k;
-    }
-    {
-        double s = sin(ps->yrot * M_PI / 180.0);
-        double c = cos(ps->yrot * M_PI / 180.0);
+    if (d2 < 0.01f) return;
 
-        ps->Xmot += (float)(x * c - z * s);
-        ps->Zmot += (float)(z * c + x * s);
-    }
+    float k = speed / sqrtf(d2);
+    double s = sin(ps->yrot * 3.141592653589793f / 180.0f); //M_PI wasn't working
+    double c = cos(ps->yrot * 3.141592653589793f / 180.0f);
+
+    x *= k;
+    z *= k;
+    ps->Xmot += (float)(x * c - z * s);
+    ps->Zmot += (float)(z * c + x * s);
 }

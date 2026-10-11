@@ -3,11 +3,6 @@
 #include "power3d.h"
 
 int make_camera(Camera *cam_out, CameraInitData *camDataPtr, Player *playerDataPtr) {
-    int i;
-    int j;
-    
-    int vx;
-    int vy;
     
     float cp;
     float sp;
