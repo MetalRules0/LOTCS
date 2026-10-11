@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include "power3d.h"
-#include "collide.c"
+#include "collide.h"
+#include "player.h"
 
 void MovePlayer_xyz(Player *ps, LevelHeader *map) {
 
