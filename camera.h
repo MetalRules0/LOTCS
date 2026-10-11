@@ -1,7 +1,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include <math.h>
+// removed math.h because its alredy used
 #include <stdint.h>
 #include "power3d.h"
 
