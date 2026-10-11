@@ -1,5 +1,6 @@
+
+#include "collide.h" // swapped them
 #include <stdint.h>
-#include "collide.h"
 
 void RegisterCollisionTile(AABB *newtile, CollisionTile *oldtile) {
 	
