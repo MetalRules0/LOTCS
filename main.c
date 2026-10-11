@@ -124,11 +124,11 @@ void gameloop() {
 
     } else if (_iskeydown(LKEY_RIGHT) == 1) {
 
-        TurnPlayer(&playerdata, 0.0f, 1.0f, 90.0f, -90.0f);
+        TurnPlayer(&playerdata, 1.0f, 0.0f, 90.0f, -90.0f);
 
     } else if (_iskeydown(LKEY_LEFT) == 1) { 
 
-        TurnPlayer(&playerdata, 0.0f, -1.0f, 90.0f, -90.0f);
+        TurnPlayer(&playerdata, -1.0f, 0.0f, 90.0f, -90.0f);
 
     }
 
