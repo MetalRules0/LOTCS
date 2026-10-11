@@ -142,8 +142,6 @@ typedef struct {
 
 }Camera;
 
-
-
 typedef struct {
 
 	uint32_t modelTreeRoot;

@@ -5,19 +5,19 @@ option casemap :none   ; case sensitive
 
 ; #########################################################################
 
-include \masm32\include\windows.inc
-include \masm32\include\kernel32.inc
-include \masm32\include\user32.inc
-include \masm32\include\gdi32.inc
-include \masm32\fpulib\fpu.inc
-include \masm32\m32lib\masm32.inc
+include C:\masm32\include\windows.inc
+include C:\masm32\include\kernel32.inc
+include C:\masm32\include\user32.inc
+include C:\masm32\include\gdi32.inc
+include C:\masm32\fpulib\fpu.inc
+include C:\masm32\m32lib\masm32.inc
 include common.inc
 
-includelib \masm32\lib\kernel32.lib
-includelib \masm32\lib\user32.lib
-includelib \masm32\lib\gdi32.lib
-includelib \masm32\fpulib\fpu.lib
-includelib \masm32\m32lib\masm32.lib
+includelib C:\masm32\lib\kernel32.lib
+includelib C:\masm32\lib\user32.lib
+includelib C:\masm32\lib\gdi32.lib
+includelib C:\masm32\fpulib\fpu.lib
+includelib C:\masm32\m32lib\masm32.lib
 
 
 ; #########################################################################
