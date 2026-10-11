@@ -1,6 +1,7 @@
 #include <math.h>
 #include <stdint.h>
 #include "power3d.h"
+#include "collide.h"
 
 void RegisterCollisionTile(AABB *newtile, CollisionTile *oldtile) {
 	
