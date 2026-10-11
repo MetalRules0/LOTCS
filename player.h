@@ -23,4 +23,8 @@ typedef struct {
 
 void MovePlayer_xyz(Player *ps, LevelHeader *map);
 
+void TurnPlayer(Player *ps, float xamount, float yamount, float maxpitch, float minpitch);
+
+void MovePlayer_Relative(Player *ps, float x, float z, float speed);
+
 #endif
