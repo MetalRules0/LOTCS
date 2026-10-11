@@ -97,22 +97,6 @@ typedef struct {
 
 } RenderTile; // total size = 0x40 bytes
 
-typedef struct {
-
-	uint16_t flags;
-	uint8_t UpdateMode;
-	char unk_03;
-	short viewWidth;
-	short viewHeight;
-	short viewStartX;
-	short viewStartY;
-	float nearClip;
-	float farClip;
-	float vfov;
-
-} CameraInitData;
-
-
 
 typedef struct {
 
