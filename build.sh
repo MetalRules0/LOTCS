@@ -4,7 +4,10 @@
 #And obviously, make sure this file is executable...
 
 clear
-rm bin/power3d.dll bin/LOTCS.EXE
+rm bin/*
+rmdir bin
+mkdir bin
+
 cd P3D
 echo | WINEDEBUG=-all wine makedll.bat
 i686-w64-mingw32-dlltool -d power3d.def -l power3d.a
