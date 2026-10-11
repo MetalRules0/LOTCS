@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include "power3d.h"
+#include "collide.h"
 
 typedef struct {
 
