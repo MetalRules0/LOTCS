@@ -15,7 +15,7 @@ cmp ax, SCREEN_HEIGHT
 ja @draw_done
 
 mov ax, x0
-cmp ax, SCREEN_WIDTH ; make sure varibes are in correct places or else nothing gets writen
+cmp ax, SCREEN_WIDTH ; make sure variables are in correct places or else nothing gets written
 ja @draw_done
 
 mov ax, x1
