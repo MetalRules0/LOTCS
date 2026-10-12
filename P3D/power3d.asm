@@ -71,7 +71,7 @@ gameTickProc  dd 0
 gameStatus    db 0
 GameActive    db 0
 ALIGN 4
-infotext      db "PowerX3D engine version PC.20260626", 0
+infotext      db "PowerX3D engine version PC.20261012", 0
 discordlnk    db "Our Public Dicord server(and for MCPlayground minecraft silver age anarchy server): https://discord.gg/tKYgqtpdcc", 0
 
 ALIGN 4
@@ -672,8 +672,8 @@ mov edx, _size
 @lbl2:
 mov eax, DWORD ptr [esi] ; lodsd but for ebx
 add esi, 4
-test eax, eax ; chek if zero
-jnz @lbl3; declaree success for 32 byte block
+test eax, eax ; check if zero
+jnz @lbl3; declare success for 32 byte block
 dec edx
 jz @lbl4 ; failure if counter runs out, run away with ecx
 jmp @lbl2
@@ -701,7 +701,7 @@ include setpixel.asm;
 include timer.asm;
 include renderproc.asm;
 include drawline.asm;
-include PushPolygon.asm;
+include pushpolygon.asm;
 include draw_wire_polygon.asm
 include iskeydown.asm
 
