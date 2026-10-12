@@ -122,7 +122,7 @@ COLLISIONTILE ENDS
 
 CHUNKHEADER STRUCT 
 
-bsize DWORD ? ; size of bytes for feild, MUST BE A MULTIPLE OF 32
+bsize DWORD ? ; size of bytes for field, MUST BE A MULTIPLE OF 32
 chunktype BYTE ? ; bitmask for data
 arraylist BYTE ?
 chunksize WORD ?
