@@ -1,6 +1,6 @@
 
 #include "collide.h" // swapped them
-#include <stdint.h>
+#include "power3d.h"
 
 void RegisterCollisionTile(AABB *newtile, CollisionTile *oldtile) {
 	
