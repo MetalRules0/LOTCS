@@ -1,6 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <stdint.h>
+#include <stdlib.h>
 #include "power3d.h"
 #include "collide.h"
 
