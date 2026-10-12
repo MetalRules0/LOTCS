@@ -1,7 +1,7 @@
 #ifndef COLLISION_H
 #define COLLISION_H
-#include <math.h>
 #include <stdint.h>
+// remove duplicate includes
 
 typedef struct {
 
