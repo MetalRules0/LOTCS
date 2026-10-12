@@ -1,9 +1,8 @@
-#include <stdint.h>
-#include <stdlib.h>
+#include "player.h" // must be in front
 #include <math.h>
 #include "power3d.h"
 #include "collide.h"
-#include "player.h"
+
 
 void MovePlayer_xyz(Player *ps, LevelHeader *map) {
 
