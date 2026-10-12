@@ -1,6 +1,6 @@
+#include "polygon.h"
 #include <math.h>
-#include <stdbool.h>
-#include "power3d.h"
+
 
 
 bool is_top_left(Vec2f* start, Vec2f* end) {
