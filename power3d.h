@@ -162,7 +162,7 @@ __declspec(dllimport) int _CheckIfReady();
 __declspec(dllimport) void _DrawLine(short x0, short y0, short x1, short y1, uint32_t color, uint32_t vbuffer);
 __declspec(dllimport) void _DrawWirePolygon(int polygonptr);
 __declspec(dllimport) void _SetPixel(short x, short y, uint32_t color);
-__declspec(dllimport) int _iskeydown(int key);
+__declspec(dllimport) int _iskeydown(short key); //changed to a short
 
 
 // Add vec2_t definition
