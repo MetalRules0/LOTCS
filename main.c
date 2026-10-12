@@ -4,10 +4,11 @@
 #include <stdbool.h>
 #include <math.h>
 #include <windows.h>
-#include "power3d.h"
-#include "player.c" //done
-#include "camera.c" //done
-#include "polygon.c" // working on it
+#include "power3d.h" // main engine header
+#include "collide.h" // done
+#include "player.h" //done
+#include "camera.h" //done
+#include "polygon.h" // done
 
 Player playerdata;
 Camera viewport; 
