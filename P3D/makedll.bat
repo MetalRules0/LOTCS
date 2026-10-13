@@ -2,7 +2,7 @@
 title Power3D build script
 echo Power3D build process START!
 echo Cleaning files...
-del /q build.log power3d.obj power3d.dll power3d.exp power3d.lib power3d.a rsrc.res
+del /q build.log power3d.obj power3d.dll power3d.exp power3d.lib power3d.a rsrc.res >nul 2>&1
 pause
 echo.
 echo.
@@ -29,7 +29,7 @@ if NOT exist power3d.dll (
     goto leave
 )
 
-echo Build success!
+echo P3D build success!
 
 :leave
 echo Cleaning intermediary files...
