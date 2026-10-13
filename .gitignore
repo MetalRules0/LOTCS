@@ -1,5 +1,5 @@
 bin/
-power3d.lib
-power3d.dll
+*.lib
+*.dll
 *BDU
 *Zone.Identifier
