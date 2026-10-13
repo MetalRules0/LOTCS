@@ -3,7 +3,7 @@ push esi
 push ebx
 push edi
 mov ecx, GdaPtr
-mov esi, [esi + VIDL1]
+mov esi, [ecx + 16]
 movzx ecx, x0
 mov edx, color
 movzx eax, y0
@@ -11,7 +11,7 @@ imul eax, eax, 480
 add ax, x0
 shl eax, 2
 @lbl1:
-push cx
+push cx ; draw a line
 @lbl2:
 mov ebx, eax
 add ebx, ecx
@@ -20,7 +20,12 @@ inc ecx
 cmp cx, x1
 jng @lbl2
 pop cx
-
+add eax, 1920
+movzx edx, y0
+inc edx
+cmp dx, y1
+mov edx, color
+jc @lbl1
 
 pop edi
 pop ebx
