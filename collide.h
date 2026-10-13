@@ -1,6 +1,7 @@
 #ifndef COLLISION_H
 #define COLLISION_H
 #include <stdint.h>
+#include "power3d.h"
 // remove duplicate includes
 
 typedef struct {

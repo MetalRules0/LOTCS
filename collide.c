@@ -1,14 +1,12 @@
-
 #include "collide.h" // swapped them
-#include "power3d.h"
 
 void RegisterCollisionTile(AABB *newtile, CollisionTile *oldtile) {
 	
-	float i;
-	float j;
-	float k;
-	float x;
-	float y;
+	//float i;
+	//float j;
+	//float k;
+	//float x;
+	//float y;
 		
 	// floor collision	
  	if ((oldtile->flags & 0x0007) == 1)  {

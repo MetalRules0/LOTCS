@@ -4,6 +4,7 @@
 // removed math.h because its alredy used
 #include <stdint.h>
 #include "power3d.h"
+#include "player.h" // Required for the player type, both in here and camera.c
 
 typedef struct {
 
