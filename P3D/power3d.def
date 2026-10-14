@@ -8,3 +8,4 @@ EXPORTS _DrawLine
 EXPORTS _SetPixel
 EXPORTS _DrawWirePolygon
 EXPORTS _iskeydown
+EXPORTS _DrawSky
