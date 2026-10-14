@@ -3,14 +3,14 @@ _DrawSky Proc flags :DWORD, Color :DWORD
 
 push ebx
 mov ecx, GdaPtr
-mov ebx, [ecx + VIDL1]
+mov ebx, DWORD ptr [ecx + VIDL1]
 xor eax, eax
 xor ecx, ecx
 mov edx, Color
 @lbl1:
 xor eax, eax
 @lbl2:
-mov [ebx], edx
+mov DWORD ptr [ebx], edx
 add ebx, 4
 inc eax
 cmp eax, SCREEN_WIDTH
