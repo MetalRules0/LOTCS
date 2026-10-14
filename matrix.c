@@ -1,7 +1,5 @@
 #include <math.h>
-
 #include "power3d.h"
-#include "matrix.h"
 
 mat4f mat4_identity(void) {
   // | 1 0 0 0 |
