@@ -295,6 +295,7 @@ _DrawLine PROTO :WORD, :WORD, :WORD, :WORD, :DWORD, :DWORD
 _DrawWirePolygon PROTO :DWORD
 _PushPolygon_wf PROTO :DWORD, :DWORD, :DWORD, :DWORD, :DWORD
 _SetPixel PROTO :WORD, :WORD, :DWORD
+_DrawSky PTORO :DWORD, :DWORD
 
 
 PUBLIC StartGame
@@ -306,3 +307,4 @@ PUBLIC _DrawLine
 PUBLIC _SetPixel
 PUBLIC _DrawWirePolygon
 PUBLIC _iskeydown
+PUBLIC _DrawSky
