@@ -12,6 +12,7 @@ include C:\masm32\include\gdi32.inc
 include C:\masm32\fpulib\fpu.inc
 include C:\masm32\m32lib\masm32.inc
 include common.inc
+include gda_layout.inc
 
 includelib C:\masm32\lib\kernel32.lib
 includelib C:\masm32\lib\user32.lib
@@ -704,6 +705,7 @@ include drawline.asm;
 include pushpolygon.asm;
 include draw_wire_polygon.asm
 include iskeydown.asm
+include sky.asm
 
 
 
