@@ -1,6 +1,11 @@
-#include <stdint.h>
+/*
+Power3D Game Engine Library Header
+*/
+
 #ifndef POWERX3D_H
 #define POWERX3D_H
+
+#include <stdint.h>
 
 #define SCREEN_WIDTH 480
 #define SCREEN_HEIGHT 360
@@ -163,7 +168,7 @@ __declspec(dllimport) void _DrawLine(short x0, short y0, short x1, short y1, uin
 __declspec(dllimport) void _DrawWirePolygon(int polygonptr);
 __declspec(dllimport) void _SetPixel(short x, short y, uint32_t color);
 __declspec(dllimport) int _iskeydown(short key); //changed to a short
-
+__declspec(dllimport) void _DrawSky(uint32_t flags, uint32_t color); // dont worry about flags for now 
 
 // Add vec2_t definition
 typedef Vec2f vec2_t;
