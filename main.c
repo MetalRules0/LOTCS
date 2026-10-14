@@ -179,7 +179,7 @@ static int ProjectPoint(const Vec3f *world, const Camera *cam, Vec2s *screen) {
 }
 
 void videoloop() {
-    _DrawSky(NULL, SKYCOLOR);
+    _DrawSky(0, SKYCOLOR); // null wont work
 
     unsigned char *base = (unsigned char *)gym.map_OffsetAddr;
     RenderTile *planes = (RenderTile *)(base + gym.RenderOffset);
