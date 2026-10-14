@@ -1,4 +1,5 @@
 #include "power3d.h"
+#include <stdlib.h>
 
 #define MAX_NUM_POLY_VERTICES 10
 #define MAX_NUM_POLY_TRIANGLES 10
