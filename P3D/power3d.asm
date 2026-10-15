@@ -275,8 +275,7 @@ test al, al
 jnz EndLoop
 
 GameLoop:
-pushad
-pushfd
+
 mov ebx, str_misc_data
 call _IncrementTimer
 
@@ -317,8 +316,6 @@ xor eax, eax
 mov TimePassed, eax
 @lbl3:
 
-popfd
-popad
 mov eax, VideoProc
 call eax
 
