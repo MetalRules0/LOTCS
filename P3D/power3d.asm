@@ -309,8 +309,7 @@ mov edx, MSPerTick
 cmp eax, edx
 jb @lbl3
 
-popfd
-popad
+
 mov eax, GameProc
 call eax
 
