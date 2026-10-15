@@ -283,8 +283,8 @@ ENDM
 ;=================
 ; Local prototypes
 ;=================
+LibMain PROTO :DWORD,:DWORD,:DWORD,:DWORD
 StartGame PROTO
-WinMain PROTO :DWORD,:DWORD,:DWORD,:DWORD
 WndProc PROTO :DWORD,:DWORD,:DWORD,:DWORD
 SetCoreProc PROTO :DWORD, :BYTE
 _Timer_new PROTO :DWORD
