@@ -110,7 +110,7 @@ szText ATTACHPROCESSC,"Allocation Failed! Your Device is Infected With MALWARE! 
 
 call GetProcessHeap
 test eax, eax
-jz @ellocerr
+jz @allocerr
 mov gameHeap, eax
 push 1024
 push 8
