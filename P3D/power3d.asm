@@ -249,6 +249,11 @@ LibMain Endp
 
 
 StartGame proc
+LOCAL tmp0 :DWORD
+LOCAL tmp1 :DWORD
+LOCAL tmp2 :DWORD
+LOCAL tmp3 :DWORD
+
 mov edx, GdaPtr
 add edx, 320
 mov str_misc_data, edx
@@ -275,6 +280,8 @@ test al, al
 jnz EndLoop
 
 GameLoop:
+mov tmp0, ebx
+
 
 mov ebx, str_misc_data
 call _IncrementTimer
@@ -303,20 +310,22 @@ jmp @lbl3
 @lbl2:
 
 call RenderProc
-mov eax, TimePassed
-mov edx, MSPerTick
-cmp eax, edx
+mov eax, TimePassed 
+cmp eax, MSPerTick
 jb @lbl3
 
 
 mov eax, GameProc
+mov ebx, tmp0
 call eax
 
 xor eax, eax
 mov TimePassed, eax
 @lbl3:
 
+
 mov eax, VideoProc
+mov ebx, tmp0
 call eax
 
 mov al, GameActive
