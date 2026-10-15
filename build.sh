@@ -4,8 +4,7 @@
 #And obviously, make sure this file is executable...
 
 clear
-rm bin/* 2>/dev/null
-rmdir bin 2>/dev/null
+rm -r bin 2>/dev/null
 mkdir bin
 
 pushd P3D
