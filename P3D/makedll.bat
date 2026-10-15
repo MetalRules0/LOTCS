@@ -9,7 +9,7 @@ echo.
 
 echo Assembling source...
 C:\masm32\bin\rc /r rsrc.rc
-C:\masm32\bin\ml /c /coff /Cp power3d.asm
+C:\masm32\bin\ml /c /coff /Cp /Zi power3d.asm
 echo.
 echo.
 
@@ -19,7 +19,7 @@ if NOT exist power3d.def (
 )
 
 echo Linking binaries...
-C:\masm32\bin\link /SUBSYSTEM:WINDOWS /DLL /DEF:power3d.def power3d.obj rsrc.res
+C:\masm32\bin\link /DEBUG /SUBSYSTEM:WINDOWS /DLL /DEF:power3d.def power3d.obj rsrc.res
 echo.
 echo.
 
