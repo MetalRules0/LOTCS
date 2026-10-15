@@ -92,86 +92,42 @@ LC1 dd 1069547520
 
 
 LibMain proc hInstDLL:DWORD, reason:DWORD, unused:DWORD
+LOCAL wc   :WNDCLASSEX
+LOCAL Wtx  :DWORD
+LOCAL Wty  :DWORD
 
-            szText LmTitle,"tstdll's LibMain Function"
+szText LmTitle,"Power3D laucher"
 
-        .if reason == DLL_PROCESS_ATTACH
-            szText ATTACHPROCESS,"PROCESS_ATTACH"
-            invoke MessageBox,NULL,ADDR ATTACHPROCESS,addr LmTitle,MB_OK
+.if reason == DLL_PROCESS_ATTACH
+szText ATTACHPROCESS,"Game Loading"
+invoke MessageBox,NULL,ADDR ATTACHPROCESS,addr LmTitle,MB_OK
 
-            return TRUE
-            ; -----------------------------
-            ; If error at startup, return 0
-            ; System will abort loading DLL
-            ; -----------------------------
+szText ATTACHPROCESSA,"Allocating Memory"
+invoke MessageBox,NULL,ADDR ATTACHPROCESSA,addr LmTitle,MB_OK
 
-        .elseif reason == DLL_PROCESS_DETACH
-            szText DETACHPROCESS,"PROCESS_DETACH"
-            invoke MessageBox,NULL,addr DETACHPROCESS,addr LmTitle,MB_OK
-
-        .elseif reason == DLL_THREAD_ATTACH
-            szText ATTACHTHREAD,"THREAD_ATTACH"
-            invoke MessageBox,NULL,addr ATTACHTHREAD,addr LmTitle,MB_OK
-
-        .elseif reason == DLL_THREAD_DETACH
-            szText DETACHTHREAD,"THREAD_DETACH"
-            invoke MessageBox,NULL,addr DETACHTHREAD,addr LmTitle,MB_OK
-            
-        .endif
-
-        ret
-
-LibMain Endp
-
-
-StartGame proc
-
-
-call GetCommandLine
-mov CommandLine, eax
+szText ATTACHPROCESSB,"Allocation success"
+szText ATTACHPROCESSC,"Allocation Failed! Your Device is Infected With MALWARE! (5) Trojans Detected"
 
 call GetProcessHeap
+test eax, eax
+jz @ellocerr
 mov gameHeap, eax
 push 1024
 push 8
 push eax
 call HeapAlloc
+test eax, eax
+jz @allocerr
 mov GdaPtr, eax
 mov esi, eax
 mov ebx, eax
 add ebx, 32
 
-
-push SW_SHOWDEFAULT
-push CommandLine
-push NULL
-push hInstance
-call WinMain
-
-push eax
-call ExitProcess
-
-StartGame endp
-
-; #########################################################################
-
-WinMain proc hInst     :DWORD,
-hPrevInst :DWORD,
-CmdLine   :DWORD,
-CmdShow   :DWORD
-
-
-LOCAL wc   :WNDCLASSEX
-LOCAL Wtx  :DWORD
-LOCAL Wty  :DWORD
+invoke MessageBox,NULL,ADDR ATTACHPROCESSB,addr LmTitle,MB_OK
 
 mov esi, GdaPtr
 mov edx, esi
 add edx, 256
-
-;==================================================
-; Fill WNDCLASSEX structure with required variables
-;==================================================
 
 mov wc.cbSize,          sizeof WNDCLASSEX
 mov wc.lpfnWndProc,    offset WndProc      
@@ -181,14 +137,14 @@ mov eax, CS_OWNDC
 mov edx, CS_HREDRAW
 or eax, edx
 mov wc.style,            eax
-mov eax,                 hInst
+mov eax,                 hInstDLL
 mov wc.hInstance,    eax           
 mov wc.hbrBackground,  COLOR_BTNFACE+1    
 mov wc.lpszMenuName,   NULL
 mov wc.lpszClassName,  offset szClassName  
 
 push 500
-push hInst
+push hInstDLL
 call LoadIcon
 mov wc.hIcon, eax
 
@@ -227,7 +183,7 @@ mov ecx, SCREEN_WIDTH
 mov edx, SCREEN_HEIGHT
 
 push NULL
-push hInst
+push hInstDLL
 push NULL
 push NULL
 push edx
@@ -242,10 +198,8 @@ call CreateWindowEx
 mov hWnd, eax
 mov DWORD ptr [esi + 12], eax
 
-
-
 push 600
-push hInst
+push hInstDLL
 call LoadMenu
 
 push eax
@@ -259,6 +213,43 @@ call ShowWindow
 push hWnd
 call UpdateWindow
 
+mov eax, 1
+ret
+
+
+            ; -----------------------------
+            ; If error at startup, return 0
+            ; System will abort loading DLL
+            ; -----------------------------
+
+        .elseif reason == DLL_PROCESS_DETACH
+            szText DETACHPROCESS,"Exiting Game"
+            invoke MessageBox,NULL,addr DETACHPROCESS,addr LmTitle,MB_OK
+            ret
+; .elseif reason == DLL_THREAD_ATTACH
+ ;           szText ATTACHTHREAD,"THREAD_ATTACH"
+  ;          invoke MessageBox,NULL,addr ATTACHTHREAD,addr LmTitle,MB_OK
+
+   ;     .elseif reason == DLL_THREAD_DETACH
+    ;        szText DETACHTHREAD,"THREAD_DETACH"
+     ;       invoke MessageBox,NULL,addr DETACHTHREAD,addr LmTitle,MB_OK
+            
+        .endif
+
+@allocerr:
+invoke MessageBox,NULL,ADDR ATTACHPROCESSC,addr LmTitle,MB_OK
+xor eax, eax
+ret
+
+LibMain Endp
+
+
+
+
+
+StartGame proc
+mov edx, GdaPtr
+add edx, 320
 
 call LoadDisplay
 
@@ -269,13 +260,9 @@ mov gameStatus, al
 
 
 ;===================================
-
-
 ; Loop until PostQuitMessage is sent
 ;===================================
-mov esi, GdaPtr
-mov ebx, esi
-add ebx, 320
+
 call RenderProc
 call _UpdateTimer
 
@@ -286,33 +273,37 @@ test al, al
 jnz EndLoop
 
 GameLoop:
+mov edx, GdaPtr
+add edx, 320
 call _IncrementTimer
 
 push PM_REMOVE
 push 0
 push 0
 push NULL
-push ebx
+push edx
 call PeekMessage
 
 test eax, eax
 jz @lbl2
 
-mov eax, DWORD ptr [ebx + 4]
+mov edx, GdaPtr
+add edx, 320
+mov eax, DWORD ptr [edx + 4]
 cmp eax, WM_QUIT
 je EndLoop
 
-push ebx
+push edx
 call TranslateMessage
-push ebx
+mov edx, GdaPtr
+add edx, 320
+push edx
 call DispatchMessage
 
 jmp @lbl3
 @lbl2:
 
-push ebx
 call RenderProc
-pop ebx
 mov eax, TimePassed
 mov edx, MSPerTick
 cmp eax, edx
@@ -346,7 +337,7 @@ xor ah, al
 mov al, 1
 ret
 
-WinMain endp
+StartGame endp
 
 
 
