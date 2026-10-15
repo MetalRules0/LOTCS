@@ -39,6 +39,7 @@ GameProc      dd 0
 VideoProc     dd 0
 DebugProc     dd 0
 StartupProc   dd 0
+str_misc_data dd 0
 
 
 ALIGN 4
@@ -250,6 +251,7 @@ LibMain Endp
 StartGame proc
 mov edx, GdaPtr
 add edx, 320
+mov str_misc_data, edx
 
 call LoadDisplay
 
@@ -273,31 +275,29 @@ test al, al
 jnz EndLoop
 
 GameLoop:
-mov edx, GdaPtr
-add edx, 320
+pushad
+pushfd
+mov ebx, str_misc_data
 call _IncrementTimer
 
 push PM_REMOVE
 push 0
 push 0
 push NULL
-push edx
+push ebx
 call PeekMessage
 
 test eax, eax
 jz @lbl2
 
-mov edx, GdaPtr
-add edx, 320
-mov eax, DWORD ptr [edx + 4]
+
+mov eax, DWORD ptr [ebx + 4]
 cmp eax, WM_QUIT
 je EndLoop
 
-push edx
+push ebx
 call TranslateMessage
-mov edx, GdaPtr
-add edx, 320
-push edx
+push ebx
 call DispatchMessage
 
 jmp @lbl3
@@ -309,23 +309,19 @@ mov edx, MSPerTick
 cmp eax, edx
 jb @lbl3
 
-pushfd
-pushad
+popfd
+popad
 mov eax, GameProc
 call eax
-popad
-popfd
 
 xor eax, eax
 mov TimePassed, eax
 @lbl3:
 
-pushad
-pushfd
+popfd
+popad
 mov eax, VideoProc
 call eax
-popfd
-popad  
 
 mov al, GameActive
 test al, al
