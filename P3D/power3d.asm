@@ -315,14 +315,18 @@ cmp eax, MSPerTick
 jb @lbl3
 
 
+; GAME LOOP
+
 mov eax, GameProc
 mov ebx, tmp0
 call eax
+mov tmp0, ebx
 
 xor eax, eax
 mov TimePassed, eax
 @lbl3:
 
+; VIDEO LOOP
 
 mov eax, VideoProc
 mov ebx, tmp0
