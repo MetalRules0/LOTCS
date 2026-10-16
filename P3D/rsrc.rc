@@ -1,21 +1,19 @@
-500 ICON MOVEABLE PURE LOADONCALL DISCARDABLE "MAINICON.ICO"
+500 ICON "mainicon.ico"
 
-600 MENUEX MOVEABLE IMPURE LOADONCALL DISCARDABLE
+600 MENUEX
 BEGIN
-    POPUP "&File", , , 0
-    BEGIN
-        MENUITEM "&Exit", 1000
-    END
-        POPUP "&Help", , , 0
-    BEGIN
-        MENUITEM "&About", 1900
-                MENUITEM "&Discord", 1950
-    END
-    POPUP "&Debug", , , 0
-    BEGIN
-        MENUITEM "&Test Timer", 1800
-        MENUITEM "&Run Debug Function", 1850
-    END
+	POPUP "&File"
+	BEGIN
+		MENUITEM "&Exit", 1000
+	END
+	POPUP "&Help"
+	BEGIN
+		MENUITEM "&About", 1900
+		MENUITEM "&Discord", 1950
+	END
+	POPUP "&Debug"
+	BEGIN
+		MENUITEM "&Test Timer", 1800
+		MENUITEM "&Debug Function", 1850
+	END
 END
-
-
