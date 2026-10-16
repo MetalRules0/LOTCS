@@ -74,7 +74,7 @@ gameStatus    db 0
 GameActive    db 0
 ALIGN 4
 infotext      db "PowerX3D engine version PC.20261012", 0
-discordlnk    db "Our Public Dicord server(and for MCPlayground minecraft silver age anarchy server): https://discord.gg/tKYgqtpdcc", 0
+discordlnk    db "Our Public Dicord server:", 0Dh, 0Ah, "https://discord.gg/tKYgqtpdcc", 0
 
 ALIGN 4
 keytable db 57h, 53h, 44h, 41h, 20h, 10h, 51h, 45h, 3Ah, 40h
@@ -383,8 +383,8 @@ call MessageBox
 .elseif wParam == 1800
 call _CheckIfReady
 jnc @lbl1
-szText TheText1,"Timer Charged :)"
-szText TheText2,"Ok this sucks. the timer was not charged :("
+szText TheText1,"Timer Charged"
+szText TheText2,"Timer not charged :("
 invoke MessageBox,hWin,ADDR TheText1,offset szDisplayName,MB_YESNO
 jmp @lbl2
 @lbl1:
