@@ -96,6 +96,9 @@ LibMain proc hInstDLL:DWORD, reason:DWORD, unused:DWORD
 LOCAL wc   :WNDCLASSEX
 LOCAL Wtx  :DWORD
 LOCAL Wty  :DWORD
+push ebx
+push esi
+push edi
 
 szText LmTitle,"Power3D laucher"
 
@@ -107,7 +110,7 @@ szText ATTACHPROCESSA,"Allocating Memory"
 invoke MessageBox,NULL,ADDR ATTACHPROCESSA,addr LmTitle,MB_OK
 
 szText ATTACHPROCESSB,"Allocation success"
-szText ATTACHPROCESSC,"Allocation Failed! Your Device is Infected With MALWARE! (5) Trojans Detected"
+szText ATTACHPROCESSC,"Allocation Failed!"
 
 call GetProcessHeap
 test eax, eax
@@ -215,6 +218,9 @@ push hWnd
 call UpdateWindow
 
 mov eax, 1
+pop edi
+pop esi
+pop ebx
 ret
 
 
