@@ -134,34 +134,34 @@ ASSUME ebx: ptr WIREPOLY
 mov ebx, Wireframe_Triangle
 
 mov ecx, [ebx].color
-mov dx, [ebx].y1
-push dx
-mov dx, [ebx].x1
-push dx
-mov dx, [ebx].y0
-push dx
-mov dx, [ebx].x0
-push dx
+movzx edx, word ptr [ebx].y1
+push edx
+movzx edx, word ptr [ebx].x1
+push edx
+movzx edx, word ptr [ebx].y0
+push edx
+movzx edx, word ptr [ebx].x0
+push edx
 call DrawLine
 
-mov dx, [ebx].y1
-push dx
-mov dx, [ebx].x1
-push dx
-mov dx, [ebx].y2
-push dx
-mov dx, [ebx].x2
-push dx
+movzx edx, word ptr [ebx].y1
+push edx
+movzx edx, word ptr [ebx].x1
+push edx
+movzx edx, word ptr [ebx].y2
+push edx
+movzx edx, word ptr [ebx].x2
+push edx
 call DrawLine
 
-mov dx, [ebx].y2
-push dx
-mov dx, [ebx].x2
-push dx
-mov dx, [ebx].y0
-push dx
-mov dx, [ebx].x0
-push dx
+movzx edx, word ptr [ebx].y2
+push edx
+movzx edx, word ptr [ebx].x2
+push edx
+movzx edx, word ptr [ebx].y0
+push edx
+movzx edx, word ptr [ebx].x0
+push edx
 call DrawLine
 
 pop edx
