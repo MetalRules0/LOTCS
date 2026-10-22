@@ -1,5 +1,5 @@
-CompDC EQU 0 ; the compadible DC for the screen
-MainDIB EQU 4 ; the device independant bitmap
+CompDC EQU 0 ; the compatible DC for the screen
+MainDIB EQU 4 ; the device independent bitmap
 OFFSET_HDC EQU 8 ; the HDC for the window and bitblt
 OFFSET_HWND EQU 12 ; the window handle
 VIDL1 EQU 16 ; main pointer to the first and main video layer
