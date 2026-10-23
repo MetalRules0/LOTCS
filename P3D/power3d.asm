@@ -40,7 +40,7 @@ VideoProc     dd 0
 DebugProc     dd 0
 StartupProc   dd 0
 str_misc_data dd 0
-
+regsave       dd 0
 
 ALIGN 4
 TickCount dd 0
@@ -286,7 +286,7 @@ test al, al
 jnz EndLoop
 
 GameLoop:
-mov tmp0, ebx
+mov regsave, ebx
 
 
 mov ebx, str_misc_data
@@ -324,9 +324,9 @@ jb @lbl3
 ; GAME LOOP
 
 mov eax, GameProc
-mov ebx, tmp0
+mov ebx, regsave
 call eax
-mov tmp0, ebx
+mov regsave, ebx
 
 xor eax, eax
 mov TimePassed, eax
@@ -335,8 +335,9 @@ mov TimePassed, eax
 ; VIDEO LOOP
 
 mov eax, VideoProc
-mov ebx, tmp0
+mov ebx, regsave
 call eax
+mov regsave, ebx
 
 mov al, GameActive
 test al, al
