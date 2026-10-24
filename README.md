@@ -1,13 +1,13 @@
-# Legacy Of The Chaos Soul
+### Legacy Of The Chaos Soul
 [Discord Server with LOTCS chat also a minecraft server](https://discord.gg/pD3qwdBd4f)
 <img src="wet_dog_hr2.png" alt="Icon!" width="512" height="512">
 
 # Today's To do list:
-~~1. fix _DrawSky() and make sure the main loop is working~~ (might be finished)
-2. continue work on text api
-3. improve documentation
++~~1. fix _DrawSky() and make sure the main loop is working~~ (might be finished)
++2. continue work on text api
++3. improve documentation
 <br>
-###Documentation still under Construction
+##Documentation still under Construction
 <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDhuZ2F5OWYwbDY5OTF4ejFrcHRha2JmbW5pM3BoNjM4N3NuNmJjNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Roy1shss4yFWPplOjV/giphy.gif" alt="Under Construction">
 ## Text Api
 call _Print_string with x and y then your text then a color and it draws it on the screen
