@@ -9,3 +9,6 @@ EXPORTS _SetPixel
 EXPORTS _DrawWirePolygon
 EXPORTS _iskeydown
 EXPORTS _DrawSky
+EXPORTS _Print_char
+EXPORTS _Print_string
+EXPORTS _Print_int

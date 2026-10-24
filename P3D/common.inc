@@ -5,6 +5,8 @@ BYTE_CNT equ 691200
 GRASSCOLOR equ 0FF66EE88h
 SKYCOLOR equ 0FF8899DDh
 MAP_ID_MAX_LEN EQU 8
+TEXT_CELL_W EQU 8 ; width of one character cell in pixels (advance per character)
+TEXT_CELL_H EQU 8 ; height of one character cell in pixels (advance per new line)
 MIN_X_ROT EQU 0C2B40000h 
 MAX_Y_ROT EQU 042b40000h
 GD_DIB EQU 4
@@ -296,6 +298,9 @@ _DrawWirePolygon PROTO C :DWORD
 _PushPolygon_wf PROTO :DWORD, :DWORD, :DWORD, :DWORD, :DWORD
 _SetPixel PROTO C :WORD, :WORD, :DWORD
 _DrawSky PROTO C :DWORD, :DWORD
+_Print_char PROTO C :DWORD, :DWORD, :DWORD, :DWORD
+_Print_string PROTO C :DWORD, :DWORD, :DWORD, :DWORD
+_Print_int PROTO C :DWORD, :DWORD, :DWORD, :DWORD
 
 
 PUBLIC StartGame
@@ -308,3 +313,6 @@ PUBLIC _SetPixel
 PUBLIC _DrawWirePolygon
 PUBLIC _iskeydown
 PUBLIC _DrawSky
+PUBLIC _Print_char
+PUBLIC _Print_string
+PUBLIC _Print_int

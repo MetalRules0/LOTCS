@@ -712,6 +712,7 @@ include pushpolygon.asm;
 include draw_wire_polygon.asm
 include iskeydown.asm
 include sky.asm
+include textapi.asm
 
 
 
