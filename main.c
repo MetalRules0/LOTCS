@@ -200,6 +200,11 @@ void videoloop() {
 
         _DrawWirePolygon((uint32_t)&poly);
     }
+
+    // text API test: drawn last so it ends up on top of the scene
+    _Print_string(4, 4, "LEGACY OF THE CHAOS SOUL\nText API test", 0xFFFFFFFF);
+    _Print_string(4, 24, "X:", 0xFFFFFF00);
+    _Print_int(4 + 2 * TEXT_CELL_W, 24, (int)playerdata.x, 0xFFFFFF00);
 }
 
 int main() {

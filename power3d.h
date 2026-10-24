@@ -15,6 +15,8 @@ Power3D Game Engine Library Header
 #define WALLCOLOR 0xFFAA4466
 
 #define MAP_ID_MAX_LEN 7
+#define TEXT_CELL_W 8 // pixels advanced per character
+#define TEXT_CELL_H 8 // pixels advanced per new line
 #define CAMERA_UPDATE_CALCULATE 4
 
 #define LKEY_UP 1
@@ -169,6 +171,11 @@ __declspec(dllimport) void _DrawWirePolygon(int polygonptr);
 __declspec(dllimport) void _SetPixel(short x, short y, uint32_t color);
 __declspec(dllimport) int _iskeydown(short key); //changed to a short
 __declspec(dllimport) void _DrawSky(uint32_t flags, uint32_t color); // dont worry about flags for now 
+
+// Text API: 8x8 font, transparent background, clipped to the screen (x/y may be negative)
+__declspec(dllimport) void _Print_char(int x, int y, int ch, uint32_t color);
+__declspec(dllimport) int _Print_string(int x, int y, const char *str, uint32_t color); // '\n' starts a new line, returns chars drawn
+__declspec(dllimport) void _Print_int(int x, int y, int value, uint32_t color);
 
 // Add vec2_t definition
 typedef Vec2f vec2_t;
