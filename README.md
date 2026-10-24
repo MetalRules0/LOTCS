@@ -6,9 +6,9 @@
 ~~1. fix _DrawSky() and make sure the main loop is working~~ (might be finished)
 2. continue work on text api
 3. improve documentation
-<img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDhuZ2F5OWYwbDY5OTF4ejFrcHRha2JmbW5pM3BoNjM4N3NuNmJjNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Roy1shss4yFWPplOjV/giphy.gif" alt="Under Construction">
 <br>
-#Documentation still under Construction
+###Documentation still under Construction
+<img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDhuZ2F5OWYwbDY5OTF4ejFrcHRha2JmbW5pM3BoNjM4N3NuNmJjNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Roy1shss4yFWPplOjV/giphy.gif" alt="Under Construction">
 ## Text Api
 call _Print_string with x and y then your text then a color and it draws it on the screen
 _Print_string(4, 4, “hello”, 0xFFFFFFFF);
