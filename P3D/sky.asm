@@ -1,24 +1,18 @@
-_DrawSky Proc flags :DWORD, Color :DWORD
+_DrawSky Proc C flags :DWORD, Color :DWORD
 ; flags is currently ignored for now
+; C (cdecl) so it matches the declaration in power3d.h: caller cleans the stack
 
-push ebx
-mov ecx, GdaPtr
-mov ebx, DWORD ptr [ecx + VIDL1]
-xor eax, eax
-xor ecx, ecx
-mov edx, Color
-@lbl1:
-xor eax, eax
-@lbl2:
-mov DWORD ptr [ebx], edx
-add ebx, 4
-inc eax
-cmp eax, SCREEN_WIDTH
-jc @lbl2
-inc ecx
-cmp ecx, SCREEN_HEIGHT
-jc @lbl1
-pop ebx
+push edi
+mov edx, GdaPtr
+mov edi, DWORD ptr [edx + VIDL1]
+test edi, edi            ; video layer not allocated yet -> nothing to draw
+jz @done
+mov eax, Color
+mov ecx, PIXEL_CNT       ; 480 * 360 pixels
+cld
+rep stosd
+@done:
+pop edi
 ret
 
 _DrawSky endp

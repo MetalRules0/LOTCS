@@ -1,4 +1,4 @@
-_SetPixel proc xpos :WORD, ypos :WORD, color :DWORD
+_SetPixel proc C xpos :WORD, ypos :WORD, color :DWORD
 
 push esi
 push ebx

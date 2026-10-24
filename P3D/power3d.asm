@@ -243,6 +243,9 @@ ret
             
         .endif
 
+mov eax, 1
+ret
+
 @allocerr:
 invoke MessageBox,NULL,ADDR ATTACHPROCESSC,addr LmTitle,MB_OK
 xor eax, eax
@@ -560,7 +563,7 @@ ret
 
 LoadDisplay endp         
 
-SetCoreProc Proc funcptr :DWORD, functype :BYTE
+SetCoreProc Proc C funcptr :DWORD, functype :BYTE
 mov al, functype
 test al, al
 jz @invalid

@@ -1,5 +1,5 @@
 
-_Timer_new proc TPS :DWORD
+_Timer_new proc C TPS :DWORD
 
 mov eax, offset dummy_ret_1
 mov ReadyProc, eax

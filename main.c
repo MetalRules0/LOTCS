@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h> // memcpy / memset
 #include <stdint.h>
 #include <stdbool.h>
 #include <math.h>
@@ -100,7 +101,7 @@ void AddRenderPlane(LevelHeader *finalmap, RenderTile *ntile, int index) {
 LevelHeader NewLevel(int xdim, int ydim, int zdim) {
 
 	
-	LevelHeader newmap;
+	LevelHeader newmap = {0}; // zero every field we do not set below
     newmap.depth = ydim;
     newmap.width = xdim;
     newmap.height = zdim;
@@ -116,25 +117,17 @@ LevelHeader NewLevel(int xdim, int ydim, int zdim) {
 
 }
 
+#define DEG2RAD 0.01745329251994329577f // player/camera angles are stored in degrees
+
 void gameloop() {
 
-    if (_iskeydown(LKEY_UP) == 1) {
+    // forward is +Z (the camera looks down +Z at yaw 0)
+    if (_iskeydown(LKEY_UP))    MovePlayer_Relative(&playerdata, 0.0f,  1.0f, 0.3f);
+    if (_iskeydown(LKEY_DOWN))  MovePlayer_Relative(&playerdata, 0.0f, -1.0f, 0.3f);
+    // TurnPlayer scales by 0.15, so 10.0f is 1.5 degrees per tick
+    if (_iskeydown(LKEY_RIGHT)) TurnPlayer(&playerdata,  10.0f, 0.0f, 90.0f, -90.0f);
+    if (_iskeydown(LKEY_LEFT))  TurnPlayer(&playerdata, -10.0f, 0.0f, 90.0f, -90.0f);
 
-        MovePlayer_Relative(&playerdata, 1.0f, 0.0f, 0.3f);
-
-
-    } else if (_iskeydown(LKEY_RIGHT) == 1) {
-
-        TurnPlayer(&playerdata, 1.0f, 0.0f, 90.0f, -90.0f);
-
-    } else if (_iskeydown(LKEY_LEFT) == 1) { 
-
-        TurnPlayer(&playerdata, -1.0f, 0.0f, 90.0f, -90.0f);
-
-    }
-
-    
-     
     MovePlayer_xyz(&playerdata, &gym);
     update_camera(&viewport, &playerdata); 
 
@@ -147,10 +140,10 @@ static int ProjectPoint(const Vec3f *world, const Camera *cam, Vec2s *screen) {
     float dx = world->x - cam->pos.x;
     float dy = world->y - cam->pos.y;
     float dz = world->z - cam->pos.z;
-    float cp = cosf(cam->rot.x);
-    float sp = sinf(cam->rot.x);
-    float cy = cosf(cam->rot.y);
-    float sy = sinf(cam->rot.y);
+    float cp = cosf(cam->rot.x * DEG2RAD);
+    float sp = sinf(cam->rot.x * DEG2RAD);
+    float cy = cosf(cam->rot.y * DEG2RAD);
+    float sy = sinf(cam->rot.y * DEG2RAD);
 
     float camx = cy * dx - sy * dz;
     float camz = sy * dx + cy * dz;
@@ -179,7 +172,7 @@ static int ProjectPoint(const Vec3f *world, const Camera *cam, Vec2s *screen) {
 }
 
 void videoloop() {
-    _DrawSky(0, SKYCOLOR); // null wont work
+    _DrawSky(0, SKYCOLOR); // flags unused for now; fills the whole video layer
 
     unsigned char *base = (unsigned char *)gym.map_OffsetAddr;
     RenderTile *planes = (RenderTile *)(base + gym.RenderOffset);
@@ -211,7 +204,7 @@ void videoloop() {
 
 int main() {
  
-    CameraInitData viewdata;
+    CameraInitData viewdata = {0};
     viewdata.flags = CAMERA_UPDATE_CALCULATE;
     viewdata.UpdateMode = 1;
     viewdata.vfov = 80;
@@ -220,7 +213,7 @@ int main() {
     playerdata.y = 32;
     playerdata.z = 0;
     
-    RenderTile tile_to_add;
+    RenderTile tile_to_add = {0};
     gym = NewLevel(256, 64, 256);
 
 

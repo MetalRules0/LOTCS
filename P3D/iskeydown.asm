@@ -1,14 +1,19 @@
-_iskeydown proc lkey :WORD
+_iskeydown proc C lkey :WORD
 
-; yeah its a little primitive rn
+; returns 1 while the key is held, 0 otherwise
+; LKEY_* constants start at 1, keytable starts at index 0
 movzx edx, lkey
-mov ecx, offset keytable
-add ecx, edx
-movzx edx, WORD ptr [ecx]
-xor dh, dh
+dec edx
+cmp edx, 9
+ja @nokey
+movzx edx, BYTE ptr [keytable + edx]
 push edx
 call GetAsyncKeyState
-and ax, 1
+movzx eax, ax
+shr eax, 15
+ret
+@nokey:
+xor eax, eax
 ret
 
 _iskeydown endp

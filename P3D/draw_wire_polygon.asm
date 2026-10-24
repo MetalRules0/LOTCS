@@ -125,7 +125,7 @@ ret
 DrawLine endp
 
 
-_DrawWirePolygon proc Wireframe_Triangle :DWORD
+_DrawWirePolygon proc C Wireframe_Triangle :DWORD
 push ebx
 push edx
 

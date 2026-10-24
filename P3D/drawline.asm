@@ -1,4 +1,4 @@
-_DrawLine proc x0 :WORD, y0 :WORD, x1 :WORD, y1 :WORD, col :DWORD, buf :DWORD ;WORKING
+_DrawLine proc C x0 :WORD, y0 :WORD, x1 :WORD, y1 :WORD, col :DWORD, buf :DWORD ;WORKING
 
 push eax
 push ebx

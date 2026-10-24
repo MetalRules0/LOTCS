@@ -74,6 +74,6 @@ void MovePlayer_Relative(Player *ps, float x, float z, float speed) {
 
     x *= k;
     z *= k;
-    ps->Xmot += (float)(x * c - z * s);
-    ps->Zmot += (float)(z * c + x * s);
+    ps->Xmot += (float)(x * c + z * s);
+    ps->Zmot += (float)(z * c - x * s);
 }
