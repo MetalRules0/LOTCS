@@ -14,11 +14,6 @@
 ;   _Print_int    (x, y, value, color)   draws a signed decimal number
 ; =====================================================================
 
-.data
-ALIGN 4
-ChrSet label byte
-include font8x8.inc
-.code
 
 _Print_char proc C xpos :DWORD, ypos :DWORD, cval :DWORD, color :DWORD
 LOCAL rowidx :DWORD
@@ -29,7 +24,7 @@ push esi
 push edi
 
 mov edx, GdaPtr
-mov edx, DWORD ptr [edx + VIDL1]
+mov edx, DWORD ptr [edx + TXTL1]
 test edx, edx                   ; video layer not allocated yet
 jz @done
 mov vbase, edx
