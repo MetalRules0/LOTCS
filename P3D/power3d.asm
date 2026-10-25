@@ -54,8 +54,12 @@ ReadyProc dd 0
 TimerStatus db 0
 ALIGN 4
 
-
+ChrSet label byte
+include font8x8.inc
 player_level DD 0
+
+ALIGN 4
+
 DEFAULT_X DD 0
 DEFAULT_Y DD 0
 DEFAULT_Z DD 0
