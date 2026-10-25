@@ -471,19 +471,6 @@ jz allocfail
 mov edi, eax
 mov DWORD ptr [esi + 16], eax
 
-mov ecx, 000FFFFFh ; 1 MB
-mov edx, MEM_COMMIT
-mov eax, MEM_RESERVE
-or edx, eax
-push PAGE_READWRITE
-push edx
-push ecx
-push NULL
-call VirtualAlloc
-test eax, eax
-jz allocfail
-mov DWORD ptr [esi + TXTL1], eax
-
 push NULL
 call CreateCompatibleDC
 cmp eax, NULL
@@ -754,6 +741,5 @@ call FpuComp
 ; ########################################################################
 
 end LibMain
-
 
 
