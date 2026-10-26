@@ -1,6 +1,6 @@
 ### Legacy Of The Chaos Soul
 
-<img src="wet_dog_hr3.png" alt="Icon!" width="512" height="512">
+<img src="wet_dog_hr_3.png" alt="Icon!" width="512" height="512">
 
 [Discord Server with LOTCS chat also a minecraft server](https://discord.gg/pD3qwdBd4f)
 
