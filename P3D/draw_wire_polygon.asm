@@ -1,4 +1,41 @@
-DrawLine proc x0 :WORD, y0 :WORD, x1 :WORD, y1 :WORD ;WORKING
+
+
+
+_DrawWirePolygon proc C Wireframe_Triangle :DWORD
+LOCAL y0:WORD, x0:WORD, y1:WORD, x1:WORD ; make sure this isnt reversed ; MetalRules
+
+push eax
+push ebx
+push ecx
+push edx
+
+
+ASSUME ebx: ptr WIREPOLY
+
+mov ebx, Wireframe_Triangle
+
+mov ecx, [ebx].color ;maybe i should try packing the bits ; MetalRules
+
+mov eax, [ebx].py
+mov edx, [ebx].px
+call DrawLine
+mov eax, [ebx].py
+mov edx, [ebx].pz
+call DrawLine
+mov eax, [ebx].px
+mov edx, [ebx].pz
+call DrawLine
+
+pop edx
+pop ecx
+pop ebx
+pop eax
+
+
+ret
+
+DrawLine:
+; eax is the xy0 and edx is the xy1
 
 push eax
 push ebx
@@ -6,21 +43,10 @@ push ecx
 push edx
 push esi
 
-mov ax, y0
-cmp ax, SCREEN_HEIGHT
-ja @draw_done
+mov DWORD ptr [x0], eax
+mov DWORD ptr [x1], edx 
 
-mov ax, y1
-cmp ax, SCREEN_HEIGHT
-ja @draw_done
-
-mov ax, x0
-cmp ax, SCREEN_WIDTH ; make sure variables are in correct places or else nothing gets written
-ja @draw_done
-
-mov ax, x1
-cmp ax, SCREEN_WIDTH
-ja @draw_done
+mov  ax, dx
 sub  ax, x0
 _abs ax
 mov dx, ax
@@ -122,50 +148,6 @@ pop ebx
 pop eax
 ret
 
-DrawLine endp
 
-
-_DrawWirePolygon proc C Wireframe_Triangle :DWORD
-push ebx
-push edx
-
-ASSUME ebx: ptr WIREPOLY
-
-mov ebx, Wireframe_Triangle
-
-mov ecx, [ebx].color
-movzx edx, word ptr [ebx].y1
-push edx
-movzx edx, word ptr [ebx].x1
-push edx
-movzx edx, word ptr [ebx].y0
-push edx
-movzx edx, word ptr [ebx].x0
-push edx
-call DrawLine
-
-movzx edx, word ptr [ebx].y1
-push edx
-movzx edx, word ptr [ebx].x1
-push edx
-movzx edx, word ptr [ebx].y2
-push edx
-movzx edx, word ptr [ebx].x2
-push edx
-call DrawLine
-
-movzx edx, word ptr [ebx].y2
-push edx
-movzx edx, word ptr [ebx].x2
-push edx
-movzx edx, word ptr [ebx].y0
-push edx
-movzx edx, word ptr [ebx].x0
-push edx
-call DrawLine
-
-pop edx
-pop ebx
-ret
 
 _DrawWirePolygon endp
