@@ -24,7 +24,7 @@ push esi
 push edi
 
 mov edx, GdaPtr
-mov edx, DWORD ptr [edx + TXTL1]
+mov edx, DWORD ptr [edx + VIDL1]
 test edx, edx                   ; video layer not allocated yet
 jz @done
 mov vbase, edx
