@@ -8,7 +8,7 @@
 
 # Today's To do list:
 
-- ~~1. fix _DrawSky() and make sure the main loop is working~~ (might be finished)
+- 1. fix _DrawWirePolygon() and make sure the main loop is working
 - 2. continue work on text api
 - 3. improve documentation
 
