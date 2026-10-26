@@ -233,12 +233,9 @@ CameraRig ENDS
 WIREPOLY STRUCT
 
 color DWORD ?
-x0 WORD ?
-y0 WORD ?
-x1 WORD ?
-y1 WORD ?
-x2 WORD ?
-y2 WORD ?
+px DWORD ?
+py DWORD ?
+pz DWORD ?
 
 WIREPOLY ENDS
 
