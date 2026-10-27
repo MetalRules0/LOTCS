@@ -712,7 +712,7 @@ include setpixel.asm;
 include timer.asm;
 include renderproc.asm;
 include drawline.asm;
-include pushpolygon.asm;
+;include pushpolygon.asm; no this trash sucks, dont use it
 include draw_wire_polygon.asm
 include iskeydown.asm
 include sky.asm
