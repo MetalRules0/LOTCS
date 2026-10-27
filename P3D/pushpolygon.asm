@@ -1,6 +1,6 @@
 
 
-_PushPolygon_wf proc a :DWORD, b :DWORD, cw :DWORD, color :DWORD, index :DWORD
+; _PushPolygon_wf proc a :DWORD, b :DWORD, cw :DWORD, color :DWORD, index :DWORD
 ; ebx is index
 push edx
 push edi
@@ -38,8 +38,8 @@ inc dx
 mov word ptr [ebx].wireframe_sp, dx
 
 
-@exit:
+;@exit:
 pop edi
 pop edx
 ret
-_PushPolygon_wf endp
+;_PushPolygon_wf endp
