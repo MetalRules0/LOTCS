@@ -32,8 +32,8 @@ Power3D Game Engine Library Header
 
 typedef struct {
 
-	short x;
-	short y;
+	uint16_t x;
+	uint16_t y;
 
 } Vec2s;
 
