@@ -67,7 +67,7 @@ int tps_count;
 */
 
 // done
-void Render_scene(__attribute__((unused))LevelHeader *map) {
+void Render_scene(LevelHeader *map) {
 
     
 
@@ -205,13 +205,12 @@ void videoloop() {
 
     // text API test: drawn last so it ends up on top of the scene
 	if (debug_toggle == TRUE) {
-		_Print_string(4, 4, "LEGACY OF THE CHAOS SOUL\nText API test", 0xFFFFFFFF);
-		_Print_string(4, 24, "X:", 0xFFFFFF00);
-		_Print_int(4 + 2 * TEXT_CELL_W, 24, (int)playerdata.x, 0xFFFFFF00);
-		_Print_string(4, 34, "Y:", 0xFFFFFF00);
-		_Print_int(4 + 2 * TEXT_CELL_W, 34, (int)playerdata.y, 0xFFFFFF00);
-		_Print_string(4, 44, "Z:", 0xFFFFFF00);
-		_Print_int(4 + 2 * TEXT_CELL_W, 44, (int)playerdata.z, 0xFFFFFF00);
+		_Print_string(4, 4, "LEGACY OF THE CHAOS SOUL", 0xFFFFFFFF);
+		_Print_string(4, 14, "MS:\nX:\nY:\nZ:", 0xFFFFFF00);
+		_Print_int(6 + 3 * TEXT_CELL_W, 14, _GetFrameRate(), 0xFFFFFF00);
+		_Print_int(6 + 2 * TEXT_CELL_W, 22, (int)playerdata.x, 0xFFFFFF00);
+		_Print_int(6 + 2 * TEXT_CELL_W, 30, (int)playerdata.y, 0xFFFFFF00);
+		_Print_int(6 + 2 * TEXT_CELL_W, 38, (int)playerdata.z, 0xFFFFFF00);
 	}
 }
 
@@ -408,6 +407,7 @@ int main() {
     //load the main level
     make_camera(&viewport, &viewdata, &playerdata);
     _Timer_new(20);
+    _SetFrameRate(16);
     SetCoreProc(&gameloop, 1); // function 1 gets called 20 times a second
     SetCoreProc(&videoloop, 2); // funtion 2 has no limit to how often it can get called
     SetCoreProc(&debugtoggler, 3); // function 3 is only called when the debug menu option is selected

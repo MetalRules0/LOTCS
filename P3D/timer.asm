@@ -5,17 +5,17 @@ mov eax, offset dummy_ret_1
 mov ReadyProc, eax
 mov eax, TPS
 mov TickPerSecond, eax
-call GetTickCount
+call timeGetTime
 mov TickCount, eax
 mov LastTime, eax
 ret
 
 _Timer_new endp
 
-_UpdateTimer proc
+UpdateTimer proc
 push eax
 push edx
-call GetTickCount
+call timeGetTime
 mov TickCount, eax
 mov edx, eax
 mov eax, LastTime
@@ -27,13 +27,13 @@ pop edx
 pop eax
 ret
 
-_UpdateTimer endp
+UpdateTimer endp
 
-_IncrementTimer proc
+IncrementTimer proc
 
 push eax
 push edx
-call GetTickCount
+call timeGetTime
 mov TickCount, eax
 mov edx, eax
 mov eax, LastTime
@@ -45,7 +45,7 @@ pop edx
 pop eax
 ret
 
-_IncrementTimer endp
+IncrementTimer endp
 
 _Timer_Reset Proc
 
@@ -68,21 +68,13 @@ push edi
 push ebx
 push edx
 
-mov edi, MaxFPS ; edx stores the max framerate
+mov edx, MaxFrameTime
 test edx, edx
-jz @error_ 
-; if no error proceed as normal
+jz @error_ ; if MaxFrameTime is 0, error
 
-call GetTickCount
-
-mov ebx, FPS_Tick 
-sub eax, ebx ; prepare for the divison by getting the time passed since the last frame in ms
-xchg eax, ebx ; division is not reversible
-xor edx, edx ; sacrifice edx to the gods for accurate division
-mov ebx, 1000 ; convert ms to seconds
-div ebx ; remander gets purged automatically when edx is restored
-
-; eax = (GetTickCount() - ebx)/1000
+call timeGetTime
+mov ebx, Frame_Tick
+sub eax, ebx ; EAX = Current time - Last frame's time
 
 pop edx
 pop ebx
@@ -103,7 +95,7 @@ _SetFrameRate Proc C frate:DWORD
 
 push eax
 mov eax, frate
-mov MaxFPS, eax
+mov MaxFrameTime, eax
 pop eax
 ret
 

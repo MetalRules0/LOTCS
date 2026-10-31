@@ -8,23 +8,29 @@ This process will output two (useful) files: `power3d.dll` and `power3d.lib`.
 uint32_t color is stored in this format: `0xFFRRGGBB`, where FF is unused.
 
 ### Initialization
-`SetCoreProc(void (*funcptr)(), char type)`: Sets one of three functions which P3D will run:
+`SetCoreProc(void (*funcptr)(), char type)`: Sets one of four functions which P3D will run:
 - Type 1: Runs once every timer tick
-- Type 2: Runs always
+- Type 2: Runs once every frame (set by Framerate)
 - Type 3: Runs when "Debug > Debug Function" is pressed
+- Type 4: Runs on engine startup
+
+`_SetFrameRate(int MS)`: Sets the maximum frame time (In Milliseconds)
 
 `_Timer_new(int TicksPerSecond)`: Sets the timer's TPS.
 
 `StartGame()`: Starts the main POWER3D loop, running the functions from SetCoreProc().
 
 ```c
-_Timer_new(20);
+_Timer_new(20); //Gameloop 20 times per second
+_SetFrameRate(16); //Draw every 16ms
 SetCoreProc(&gameloop, 1);
 SetCoreProc(&videoloop, 2);
 StartGame();
 ```
 
-### User Interaction
+### System Interaction
+`_GetFrameRate()`: Returns milliseconds since last frame
+
 `_iskeydown(short key)`: Checks if the requested key is currently being pressed. Returns either 0 (Unpressed) or 1 (Pressed).
 
 Allowed keys:
@@ -76,4 +82,4 @@ _Print_int(40, 24, 38, 0xFFFFFF00); //Displays the number 38
 ```
 
 ### TO DOCUMENT:
-`_UpdateTimer`, `_DrawLine`, `_DrawWirePolygon`
+`_DrawLine`, `_DrawWirePolygon`

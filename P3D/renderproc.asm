@@ -29,8 +29,8 @@ push 0
 push eax
 call BitBlt
 
-call GetTickCount
-mov FPS_Tick, eax ; tick count since last frame
+call timeGetTime
+mov Frame_Tick, eax ; tick count since last frame
 
 pop edx
 pop ecx

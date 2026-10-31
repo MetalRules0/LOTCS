@@ -287,8 +287,6 @@ StartGame PROTO
 WndProc PROTO :DWORD,:DWORD,:DWORD,:DWORD
 SetCoreProc PROTO C :DWORD, :BYTE
 _Timer_new PROTO C :DWORD
-_UpdateTimer PROTO
-_IncrementTimer PROTO
 _DrawLine PROTO C :WORD, :WORD, :WORD, :WORD, :DWORD, :DWORD
 _DrawWirePolygon PROTO C :DWORD
 _PushPolygon_wf PROTO :DWORD, :DWORD, :DWORD, :DWORD, :DWORD
@@ -302,7 +300,6 @@ _Print_int PROTO C :DWORD, :DWORD, :DWORD, :DWORD
 PUBLIC StartGame
 PUBLIC SetCoreProc
 PUBLIC _Timer_new
-PUBLIC _UpdateTimer
 PUBLIC _DrawLine
 PUBLIC _SetPixel
 PUBLIC _DrawWirePolygon

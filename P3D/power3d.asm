@@ -9,6 +9,7 @@ include C:\masm32\include\windows.inc
 include C:\masm32\include\kernel32.inc
 include C:\masm32\include\user32.inc
 include C:\masm32\include\gdi32.inc
+include C:\masm32\include\winmm.inc
 include C:\masm32\fpulib\fpu.inc
 include C:\masm32\m32lib\masm32.inc
 include common.inc
@@ -17,6 +18,7 @@ include gda_layout.inc
 includelib C:\masm32\lib\kernel32.lib
 includelib C:\masm32\lib\user32.lib
 includelib C:\masm32\lib\gdi32.lib
+includelib C:\masm32\lib\winmm.lib
 includelib C:\masm32\fpulib\fpu.lib
 includelib C:\masm32\m32lib\masm32.lib
 
@@ -51,9 +53,8 @@ MSPerTick  dd 50
 MaxTickUpdate dd 100
 TickPerSecond dd 20
 ReadyProc dd 0
-FPS dd 0
-FPS_Tick dd 0
-MaxFPS dd 0
+Frame_Tick dd 0
+MaxFrameTime dd 0
 TimerStatus db 0
 ALIGN 4
 
@@ -260,7 +261,7 @@ mov gameStatus, al
 ;===================================
 
 call RenderProc
-call _UpdateTimer
+call UpdateTimer
 
 @lbl1:
 
@@ -272,7 +273,7 @@ GameLoop:
 mov regsave, ebx
 mov ebx, str_misc_data
 
-call _IncrementTimer
+call IncrementTimer
 
 push PM_REMOVE
 push 0
@@ -294,16 +295,21 @@ call TranslateMessage
 push ebx
 call DispatchMessage
 
-jmp @lbl3
-
 @lbl2:
+call _GetFrameRate
+cmp eax, MaxFrameTime
+jb @SleepExec
 
+; VIDEO LOOP
+mov eax, VideoProc
+mov ebx, regsave
+call eax
+mov regsave, ebx
 call RenderProc
+
 mov eax, TimePassed 
 cmp eax, MSPerTick
 jb @lbl3
-cmp eax, 20
-jb @lbl4
 
 ; GAME LOOP
 
@@ -317,16 +323,6 @@ mov TimePassed, eax
 
 @lbl3:
 
-
-; VIDEO LOOP
-
-mov eax, VideoProc
-mov ebx, regsave
-call eax
-mov regsave, ebx
-
-@lbl4:
-
 mov al, GameActive
 test al, al
 jz GameLoop
@@ -336,6 +332,11 @@ EndLoop:
 xor ah, al
 mov al, 1
 ret
+
+@SleepExec:
+push 2
+call Sleep
+jmp @lbl3
 
 StartGame endp
 

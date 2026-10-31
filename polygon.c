@@ -32,7 +32,7 @@ void draw_pixel(float x, float y, int c) {
 
 }
 
-void draw_right_triangle(short x, short y, __attribute__((unused))signed short slope, __attribute__((unused))short height) {
+void draw_right_triangle(short x, short y, signed short slope, short height) {
 	draw_pixel(x, y, 0); /* Todo: actual proper triangle drawing */
 }
 
