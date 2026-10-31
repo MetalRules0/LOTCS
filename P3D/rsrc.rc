@@ -6,14 +6,10 @@ BEGIN
 	BEGIN
 		MENUITEM "&Exit", 1000
 	END
-	POPUP "&Help"
+	POPUP "&About"
 	BEGIN
-		MENUITEM "&About", 1900
+		MENUITEM "&Power3D", 1900
 		MENUITEM "&Discord", 1950
 	END
-	POPUP "&Debug"
-	BEGIN
-		MENUITEM "&Test Timer", 1800
-		MENUITEM "&Debug Function", 1850
-	END
+	MENUITEM "&Debug", 1850
 END
