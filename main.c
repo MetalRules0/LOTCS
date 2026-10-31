@@ -15,7 +15,9 @@ Player playerdata;
 Camera viewport; 
 LevelHeader gym;
 char videomode;
-
+bool debug_toggle;
+int fps_count; // for later ; MetalRules
+int tps_count;
     /*
 
 ; 256, 26, -256
@@ -202,9 +204,15 @@ void videoloop() {
     }
 
     // text API test: drawn last so it ends up on top of the scene
+	if (debug_toggle == TRUE) {
     _Print_string(4, 4, "LEGACY OF THE CHAOS SOUL\nText API test", 0xFFFFFFFF);
     _Print_string(4, 24, "X:", 0xFFFFFF00);
     _Print_int(4 + 2 * TEXT_CELL_W, 24, (int)playerdata.x, 0xFFFFFF00);
+	_Print_string(4, 34, "Y:", 0xFFFFFF00);
+	_Print_int(4 + 2 * TEXT_CELL_W, 34, (int)playerdata.y, 0xFFFFFF00);
+	_Print_string(4, 44, "Z:", 0xFFFFFF00);
+	_Print_int(4 + 2 * TEXT_CELL_W, 44, (int)playerdata.z, 0xFFFFFF00);
+	}
 }
 
 int main() {
@@ -393,7 +401,7 @@ int main() {
 
     AddRenderPlane(&gym, &tile_to_add, 10);
 
-
+	debug_toggle = TRUE;
     //load the main level
     make_camera(&viewport, &viewdata, &playerdata);
     _Timer_new(20);
