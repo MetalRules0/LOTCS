@@ -52,6 +52,7 @@ MaxTickUpdate dd 100
 TickPerSecond dd 20
 ReadyProc dd 0
 FPS dd 0
+FPS_Tick
 MaxFPS dd 0
 TimerStatus db 0
 ALIGN 4
