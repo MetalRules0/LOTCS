@@ -62,6 +62,43 @@ ret
 
 _SetTickSpeed endp
 
+_GetFrameRate proc C
+
+push edi
+push ebx
+push edx
+
+mov edi, MaxFPS ; edx stores the max framerate
+test edx, edx
+jz @error_ 
+; if no error proceed as normal
+
+call GetTickCount
+
+mov ebx, FPS_Tick 
+sub eax, ebx ; prepare for the divison by getting the time passed since the last frame in ms
+xchg eax, ebx ; division is not reversible
+xor edx, edx ; sacrifice edx to the gods for accurate division
+mov ebx, 1000 ; convert ms to seconds
+div ebx ; remander gets purged automatically when edx is restored
+
+; eax = (GetTickCount() - ebx)/1000
+
+pop edx
+pop ebx
+pop edi
+ret
+
+@error_:
+mov eax, 0FFFFFFFFh ; return -1 if invalid
+
+pop edx
+pop ebx
+pop edi
+ret
+
+_GetFrameRate endp
+
 dummy_ret_1:
 nop
 nop
