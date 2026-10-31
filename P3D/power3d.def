@@ -1,6 +1,7 @@
 LIBRARY power3d
-EXPORTS StartGame
-EXPORTS SetCoreProc
+EXPORTS _StartEngine
+EXPORTS _SetCoreProc
+EXPORTS _SetWindowTitle
 EXPORTS _Timer_new
 EXPORTS _GetFrameRate
 EXPORTS _SetFrameRate

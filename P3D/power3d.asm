@@ -30,14 +30,15 @@ includelib C:\masm32\m32lib\masm32.lib
 
 .data
 
-szDisplayName db "Game",0
+szUnsetName db "Power3D Program",0
 ALIGN 4
+szDisplayName dd offset szUnsetName
 CommandLine   dd 0
 hWnd          dd 0
 hInstance     dd 0
 hBmp          dd 0
 fntptr        dd 0
-GameProc      dd 0
+ThinkProc      dd 0
 VideoProc     dd 0
 DebugProc     dd 0
 StartupProc   dd 0
@@ -71,17 +72,15 @@ DEFAULT_Z DD 0
 
 GdaPtr        dd 0
 
-szClassName   db "Game_Class",0
+szClassName   db "P3D_Class",0
 ALIGN 4
 
 scrdef        dd 00000042h
 
-gameHeap      dd 0    
-gameTickProc  dd 0
-gameStatus    db 0
-GameActive    db 0
+engineHeap      dd 0    
+engineStatus    db 0
 ALIGN 4
-infotext      db "PowerX3D engine version PC.20261030", 0
+infotext      db "Power3D engine version PC.20261031", 0
 discordlnk    db "Our Public Dicord server:", 0Dh, 0Ah, "https://discord.gg/tKYgqtpdcc", 0
 
 ALIGN 4
@@ -116,7 +115,7 @@ call timeBeginPeriod
 call GetProcessHeap
 test eax, eax
 jz @allocerr
-mov gameHeap, eax
+mov engineHeap, eax
 push 1024
 push 8
 push eax
@@ -193,7 +192,7 @@ push ecx
 push Wty
 push Wtx
 push 13107200
-push offset szDisplayName
+push szDisplayName
 push offset szClassName
 push WS_EX_OVERLAPPEDWINDOW
 call CreateWindowEx
@@ -239,8 +238,19 @@ LibMain Endp
 
 
 
+_SetWindowTitle proc C WindowTitle :DWORD
+mov eax, WindowTitle
+mov szDisplayName, eax
+push eax
+push hWnd
+call SetWindowText
+ret
+_SetWindowTitle endp
 
-StartGame proc
+
+
+
+_StartEngine proc
 LOCAL tmp0 :DWORD
 LOCAL tmp1 :DWORD
 LOCAL tmp2 :DWORD
@@ -253,9 +263,9 @@ mov str_misc_data, edx
 call LoadDisplay
 
 
-mov al, gameStatus
+mov al, engineStatus
 or al, 00000010b
-mov gameStatus, al
+mov engineStatus, al
 
 
 ;===================================
@@ -267,11 +277,7 @@ call UpdateTimer
 
 @lbl1:
 
-mov al, GameActive
-test al, al
-jnz EndLoop
-
-GameLoop:
+EngineLoop:
 mov regsave, ebx
 mov ebx, str_misc_data
 
@@ -315,7 +321,7 @@ jb @lbl3
 
 ; GAME LOOP
 
-mov eax, GameProc
+mov eax, ThinkProc
 mov ebx, regsave
 call eax
 mov regsave, ebx
@@ -324,10 +330,7 @@ xor eax, eax
 mov TimePassed, eax
 
 @lbl3:
-
-mov al, GameActive
-test al, al
-jz GameLoop
+jmp EngineLoop
 
 EndLoop:
 
@@ -340,7 +343,7 @@ push 1
 call Sleep
 jmp @lbl3
 
-StartGame endp
+_StartEngine endp
 
 
 
@@ -362,13 +365,13 @@ WndProc proc hWin :DWORD, uMsg :DWORD, wParam :DWORD, lParam :DWORD
 invoke SendMessage,hWin,WM_SYSCOMMAND,SC_CLOSE,NULL
 .elseif wParam == 1900
 push MB_OK
-push offset szDisplayName   ; in .data section
+push szDisplayName   ; in .data section
 push offset infotext          ; in .data section
 push hWin
 call MessageBox
 .elseif wParam == 1950
 push MB_OK
-push offset szDisplayName
+push szDisplayName
 push offset discordlnk
 push hWin
 call MessageBox
@@ -379,8 +382,8 @@ call eax
 ;====== end menu commands ======
 
 .elseif uMsg == WM_CLOSE
-szText TheText,"Please Confirm Exit"
-invoke MessageBox,hWin,ADDR TheText,offset szDisplayName,MB_YESNO
+szText TheText,"Really Exit?"
+invoke MessageBox,hWin,ADDR TheText,szDisplayName,MB_YESNO
 .if eax == IDNO
 ret
 .endif
@@ -409,10 +412,6 @@ push wParam
 push uMsg
 push hWin
 call DefWindowProc
-
-ret
-
-
 
 ret
 WndProc endp
@@ -521,9 +520,9 @@ nop
 gobackld:
 
 
-mov al, gameStatus
+mov al, engineStatus
 or al, 8
-mov gameStatus, al
+mov engineStatus, al
   
   pop ebx
   pop esi
@@ -541,12 +540,12 @@ ret
 
 LoadDisplay endp         
 
-SetCoreProc Proc C funcptr :DWORD, functype :BYTE
+_SetCoreProc Proc C funcptr :DWORD, functype :BYTE
 mov al, functype
 test al, al
 jz @invalid
 cmp al, 1
-je @setgame
+je @setthink
 cmp al, 2
 je @setrender
 cmp al, 3
@@ -558,9 +557,9 @@ je @setStartProc
 mov eax, 0FFFFFFFFh
 ret
 
-@setgame:
+@setthink:
 mov eax, funcptr
-mov GameProc, eax
+mov ThinkProc, eax
 xor eax, eax
 ret
 
@@ -583,7 +582,7 @@ mov StartupProc, eax
 xor eax, eax
 ret
 
-SetCoreProc endp
+_SetCoreProc endp
 
 
 

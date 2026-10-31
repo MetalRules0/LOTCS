@@ -406,11 +406,12 @@ int main() {
 
     //load the main level
     make_camera(&viewport, &viewdata, &playerdata);
+    _SetWindowTitle("Legacy of the Chaos Soul");
     _Timer_new(20);
     _SetFrameRate(16);
-    SetCoreProc(&gameloop, 1); // function 1 gets called 20 times a second
-    SetCoreProc(&videoloop, 2); // funtion 2 has no limit to how often it can get called
-    SetCoreProc(&debugtoggler, 3); // function 3 is only called when the debug menu option is selected
-    StartGame();
+    _SetCoreProc(&gameloop, 1); // function 1 gets called 20 times a second
+    _SetCoreProc(&videoloop, 2); // funtion 2 has no limit to how often it can get called
+    _SetCoreProc(&debugtoggler, 3); // function 3 is only called when the debug menu option is selected
+    _StartEngine();
     return 1;
 }

@@ -8,7 +8,9 @@ This process will output two (useful) files: `power3d.dll` and `power3d.lib`.
 uint32_t color is stored in this format: `0xFFRRGGBB`, where FF is unused.
 
 ### Initialization
-`SetCoreProc(void (*funcptr)(), char type)`: Sets one of four functions which P3D will run:
+`_SetWindowTitle(char* title)`: Sets the title of any windows created. Call at any time to update the main window.
+
+`_SetCoreProc(void (*funcptr)(), char type)`: Sets one of four functions which P3D will run:
 - Type 1: Runs once every timer tick
 - Type 2: Runs once every frame (set by Framerate)
 - Type 3: Runs when "Debug > Debug Function" is pressed
@@ -18,14 +20,15 @@ uint32_t color is stored in this format: `0xFFRRGGBB`, where FF is unused.
 
 `_Timer_new(int TicksPerSecond)`: Sets the timer's TPS.
 
-`StartGame()`: Starts the main POWER3D loop, running the functions from SetCoreProc().
+`_StartEngine()`: Starts the main POWER3D loop, running the functions from `_SetCoreProc()`.
 
 ```c
+_SetWindowTitle("LOTCS");
 _Timer_new(20); //Gameloop 20 times per second
 _SetFrameRate(16); //Draw every 16ms
-SetCoreProc(&gameloop, 1);
-SetCoreProc(&videoloop, 2);
-StartGame();
+_SetCoreProc(&gameloop, 1);
+_SetCoreProc(&videoloop, 2);
+_StartEngine();
 ```
 
 ### System Interaction

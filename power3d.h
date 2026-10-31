@@ -1,5 +1,5 @@
 /*
-Power3D Game Engine Library Header
+Power3D Engine Library Header
 */
 
 #ifndef POWERX3D_H
@@ -146,8 +146,9 @@ typedef struct {
 
 } LevelHeader;
 
-__declspec(dllimport) void StartGame();
-__declspec(dllimport) int SetCoreProc(void (*funcptr)(), char type);
+__declspec(dllimport) void _StartEngine();
+__declspec(dllimport) int _SetCoreProc(void (*funcptr)(), char type);
+__declspec(dllimport) void _SetWindowTitle(char* WindowTitle);
 __declspec(dllimport) void _Timer_new(int TPS);
 __declspec(dllimport) void _SetFrameRate(int FrameRate);
 __declspec(dllimport) int _GetFrameRate();

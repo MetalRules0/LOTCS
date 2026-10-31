@@ -283,9 +283,10 @@ ENDM
 ; Local prototypes
 ;=================
 LibMain PROTO :DWORD,:DWORD,:DWORD
-StartGame PROTO
+_StartEngine PROTO
 WndProc PROTO :DWORD,:DWORD,:DWORD,:DWORD
-SetCoreProc PROTO C :DWORD, :BYTE
+_SetCoreProc PROTO C :DWORD, :BYTE
+_SetWindowTitle PROTO C :DWORD
 _Timer_new PROTO C :DWORD
 _DrawLine PROTO C :WORD, :WORD, :WORD, :WORD, :DWORD, :DWORD
 _DrawWirePolygon PROTO C :DWORD
@@ -297,8 +298,9 @@ _Print_string PROTO C :DWORD, :DWORD, :DWORD, :DWORD
 _Print_int PROTO C :DWORD, :DWORD, :DWORD, :DWORD
 
 
-PUBLIC StartGame
-PUBLIC SetCoreProc
+PUBLIC _StartEngine
+PUBLIC _SetCoreProc
+PUBLIC _SetWindowTitle
 PUBLIC _Timer_new
 PUBLIC _DrawLine
 PUBLIC _SetPixel
