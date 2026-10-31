@@ -77,7 +77,7 @@ gameTickProc  dd 0
 gameStatus    db 0
 GameActive    db 0
 ALIGN 4
-infotext      db "PowerX3D engine version PC.20261012", 0
+infotext      db "PowerX3D engine version PC.20261030", 0
 discordlnk    db "Our Public Dicord server:", 0Dh, 0Ah, "https://discord.gg/tKYgqtpdcc", 0
 
 ALIGN 4

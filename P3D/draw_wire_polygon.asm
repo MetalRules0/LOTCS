@@ -13,6 +13,8 @@ push edx
 ASSUME ebx: ptr WIREPOLY
 
 mov ebx, Wireframe_Triangle
+mov edi, GdaPtr
+mov edi, [edi + VIDL1]
 
 mov ecx, [ebx].color ;maybe i should try packing the bits ; MetalRules
 
@@ -61,9 +63,7 @@ jmp @lbl2
 mov ax, -1
 
 
-mov  ax, x1
-sub  ax, x0
-_abs ax
+
 @lbl2:
 rol eax, 16
 
