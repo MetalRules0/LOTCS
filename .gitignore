@@ -2,5 +2,6 @@ bin/
 *.lib
 *.dll
 *.obj
+*.dev
 *BDU
 *Zone.Identifier
