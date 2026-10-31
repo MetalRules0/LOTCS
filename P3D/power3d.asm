@@ -269,9 +269,8 @@ jnz EndLoop
 
 GameLoop:
 mov regsave, ebx
-
-
 mov ebx, str_misc_data
+
 call _IncrementTimer
 
 push PM_REMOVE
@@ -284,24 +283,24 @@ call PeekMessage
 test eax, eax
 jz @lbl2
 
-
 mov eax, DWORD ptr [ebx + 4]
 cmp eax, WM_QUIT
 je EndLoop
 
 push ebx
 call TranslateMessage
+
 push ebx
 call DispatchMessage
 
 jmp @lbl3
+
 @lbl2:
 
 call RenderProc
 mov eax, TimePassed 
 cmp eax, MSPerTick
 jb @lbl3
-
 
 ; GAME LOOP
 
@@ -312,6 +311,7 @@ mov regsave, ebx
 
 xor eax, eax
 mov TimePassed, eax
+
 @lbl3:
 
 ; VIDEO LOOP
