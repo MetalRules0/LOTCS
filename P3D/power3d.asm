@@ -302,6 +302,8 @@ call RenderProc
 mov eax, TimePassed 
 cmp eax, MSPerTick
 jb @lbl3
+cmp eax, 20
+jb @lbl4
 
 ; GAME LOOP
 
@@ -315,12 +317,15 @@ mov TimePassed, eax
 
 @lbl3:
 
+
 ; VIDEO LOOP
 
 mov eax, VideoProc
 mov ebx, regsave
 call eax
 mov regsave, ebx
+
+@lbl4:
 
 mov al, GameActive
 test al, al
