@@ -151,6 +151,7 @@ __declspec(dllimport) int SetCoreProc(void (*funcptr)(), char type);
 __declspec(dllimport) void _Timer_new(int TPS);
 __declspec(dllimport) void _UpdateTimer();
 __declspec(dllimport) void _IncrementTimer();
+__declspec(dllimport) void _SetFrameRate(int FrameRate);
 __declspec(dllimport) void _DrawLine(short x0, short y0, short x1, short y1, uint32_t color, uint32_t vbuffer);
 __declspec(dllimport) void _DrawWirePolygon(WirePolygon *polygon);
 __declspec(dllimport) void _SetPixel(short x, short y, uint32_t color);
