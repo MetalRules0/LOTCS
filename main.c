@@ -198,7 +198,7 @@ void videoloop() {
         poly.b = projected[1];
         poly.c = projected[2];
 
-        _DrawWirePolygon((uint32_t)&poly);
+        _DrawWirePolygon(&poly);
     }
 
     // text API test: drawn last so it ends up on top of the scene

@@ -146,20 +146,6 @@ typedef struct {
 
 } LevelHeader;
 
-/*
-extern void  StartGame();
-extern int  SetCoreProc(uint32_t funcptr, char type);
-extern void  _Timer_new(int TPS);
-extern void  _UpdateTimer();
-extern void  _IncrementTimer();
-extern int  _CheckIfReady();
-extern void  _DrawLine(short x0, short y0, short x1, short y1, uint32_t color, uint32_t vbuffer);
-extern void  _DrawWirePolygon(int polygonptr);
-extern void  _SetPixel(short x, short y, uint32_t color, uint32_t scrbuf);
-*/
-
-
-//POWERX3D void __stdcall _DrawWirePolygon(int polygonptr);
 __declspec(dllimport) void StartGame();
 __declspec(dllimport) int SetCoreProc(void (*funcptr)(), char type);
 __declspec(dllimport) void _Timer_new(int TPS);
@@ -167,10 +153,10 @@ __declspec(dllimport) void _UpdateTimer();
 __declspec(dllimport) void _IncrementTimer();
 __declspec(dllimport) int _CheckIfReady();
 __declspec(dllimport) void _DrawLine(short x0, short y0, short x1, short y1, uint32_t color, uint32_t vbuffer);
-__declspec(dllimport) void _DrawWirePolygon(int polygonptr);
+__declspec(dllimport) void _DrawWirePolygon(WirePolygon *polygon);
 __declspec(dllimport) void _SetPixel(short x, short y, uint32_t color);
 __declspec(dllimport) int _iskeydown(short key); //changed to a short
-__declspec(dllimport) void _DrawSky(uint32_t flags, uint32_t color); // dont worry about flags for now 
+__declspec(dllimport) void _DrawSky(uint32_t flags, uint32_t color); // don't worry about flags for now 
 
 // Text API: 8x8 font, transparent background, clipped to the screen (x/y may be negative)
 __declspec(dllimport) void _Print_char(int x, int y, int ch, uint32_t color);
