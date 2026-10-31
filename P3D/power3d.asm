@@ -100,22 +100,13 @@ LibMain proc hInstDLL:DWORD, reason:DWORD, unused:DWORD
 LOCAL wc   :WNDCLASSEX
 LOCAL Wtx  :DWORD
 LOCAL Wty  :DWORD
+
+szText LmTitle,"Power3D"
+
+.if reason == DLL_PROCESS_ATTACH
 push ebx
 push esi
 push edi
-
-szText LmTitle,"Power3D laucher"
-
-.if reason == DLL_PROCESS_ATTACH
-szText ATTACHPROCESS,"Game Loading"
-invoke MessageBox,NULL,ADDR ATTACHPROCESS,addr LmTitle,MB_OK
-
-szText ATTACHPROCESSA,"Allocating Memory"
-invoke MessageBox,NULL,ADDR ATTACHPROCESSA,addr LmTitle,MB_OK
-
-szText ATTACHPROCESSB,"Allocation success"
-szText ATTACHPROCESSC,"Allocation Failed!"
-
 call GetProcessHeap
 test eax, eax
 jz @allocerr
@@ -131,9 +122,6 @@ mov esi, eax
 mov ebx, eax
 add ebx, 32
 
-invoke MessageBox,NULL,ADDR ATTACHPROCESSB,addr LmTitle,MB_OK
-
-mov esi, GdaPtr
 mov edx, esi
 add edx, 256
 
@@ -227,32 +215,17 @@ pop esi
 pop ebx
 ret
 
-
-            ; -----------------------------
-            ; If error at startup, return 0
-            ; System will abort loading DLL
-            ; -----------------------------
-
-        .elseif reason == DLL_PROCESS_DETACH
-            szText DETACHPROCESS,"Exiting Game"
-            invoke MessageBox,NULL,addr DETACHPROCESS,addr LmTitle,MB_OK
-            ret
-; .elseif reason == DLL_THREAD_ATTACH
- ;           szText ATTACHTHREAD,"THREAD_ATTACH"
-  ;          invoke MessageBox,NULL,addr ATTACHTHREAD,addr LmTitle,MB_OK
-
-   ;     .elseif reason == DLL_THREAD_DETACH
-    ;        szText DETACHTHREAD,"THREAD_DETACH"
-     ;       invoke MessageBox,NULL,addr DETACHTHREAD,addr LmTitle,MB_OK
-            
-        .endif
-
-mov eax, 1
+.else
 ret
+.endif
 
 @allocerr:
-invoke MessageBox,NULL,ADDR ATTACHPROCESSC,addr LmTitle,MB_OK
+szText ATTACHPROCESSERR,"Allocation Failed!"
+invoke MessageBox,NULL,ADDR ATTACHPROCESSERR,addr LmTitle,MB_OK
 xor eax, eax
+pop edi
+pop esi
+pop ebx
 ret
 
 LibMain Endp
@@ -393,10 +366,10 @@ call _CheckIfReady
 jnc @lbl1
 szText TheText1,"Timer Charged"
 szText TheText2,"Timer not charged :("
-invoke MessageBox,hWin,ADDR TheText1,offset szDisplayName,MB_YESNO
+invoke MessageBox,hWin,ADDR TheText1,offset szDisplayName,MB_OK
 jmp @lbl2
 @lbl1:
-invoke MessageBox,hWin,ADDR TheText2,offset szDisplayName,MB_YESNO
+invoke MessageBox,hWin,ADDR TheText2,offset szDisplayName,MB_OK
 .elseif wParam == 1850
 mov eax, DebugProc
 call eax
@@ -741,5 +714,3 @@ call FpuComp
 ; ########################################################################
 
 end LibMain
-
-
