@@ -363,19 +363,9 @@ push offset szDisplayName
 push offset discordlnk
 push hWin
 call MessageBox
-.elseif wParam == 1800
-call _CheckIfReady
-jnc @lbl1
-szText TheText1,"Timer Charged"
-szText TheText2,"Timer not charged :("
-invoke MessageBox,hWin,ADDR TheText1,offset szDisplayName,MB_OK
-jmp @lbl2
-@lbl1:
-invoke MessageBox,hWin,ADDR TheText2,offset szDisplayName,MB_OK
 .elseif wParam == 1850
 mov eax, DebugProc
 call eax
-@lbl2:
 .endif
 ;====== end menu commands ======
 
