@@ -149,6 +149,7 @@ typedef struct {
 __declspec(dllimport) void _StartEngine();
 __declspec(dllimport) int _SetCoreProc(void (*funcptr)(), char type);
 __declspec(dllimport) void _SetWindowTitle(char* WindowTitle);
+__declspec(dllimport) void _SetWindowIcon(int WindowIcon, int Width, int Height, int SetLargeIcon);
 __declspec(dllimport) void _Timer_new(int TPS);
 __declspec(dllimport) void _SetFrameRate(int FrameRate);
 __declspec(dllimport) int _GetFrameRate();

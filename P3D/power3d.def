@@ -2,6 +2,7 @@ LIBRARY power3d
 EXPORTS _StartEngine
 EXPORTS _SetCoreProc
 EXPORTS _SetWindowTitle
+EXPORTS _SetWindowIcon
 EXPORTS _Timer_new
 EXPORTS _GetFrameRate
 EXPORTS _SetFrameRate

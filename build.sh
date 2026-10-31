@@ -13,15 +13,16 @@ i686-w64-mingw32-dlltool -d power3d.def -l power3d.a
 
 popd
 echo Building LOTCS...
+i686-w64-mingw32-windres resources/icon.rc -O coff -o icon.o
 # ... Do not generate unneccessary sections
 Compiler=(-ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-ident -fomit-frame-pointer)
 # ... Link to Windows 95, remove unused sections in linker
 Linker=(-Wl,--subsystem,windows:4.0 -Wl,--gc-sections)
 
-i686-w64-mingw32-gcc -std=c99 -march=i586 -Os "${Compiler[@]}" -Wall -Wextra -Wpedantic main.c camera.c player.c collide.c P3D/power3d.a "${Linker[@]}" -o bin/LOTCS.EXE
+i686-w64-mingw32-gcc -std=c99 -march=i586 -Os "${Compiler[@]}" -Wall -Wextra -Wpedantic main.c camera.c player.c collide.c icon.o P3D/power3d.a "${Linker[@]}" -o bin/LOTCS.EXE
 
 # Manage build artifacts 
-rm P3D/power3d.a P3D/power3d.lib
+rm P3D/power3d.a P3D/power3d.lib icon.o
 mv P3D/power3d.dll bin/Power3D.dll
 
 # Strip even more useless information from the binaries

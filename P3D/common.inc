@@ -287,6 +287,7 @@ _StartEngine PROTO
 WndProc PROTO :DWORD,:DWORD,:DWORD,:DWORD
 _SetCoreProc PROTO C :DWORD, :BYTE
 _SetWindowTitle PROTO C :DWORD
+_SetWindowIcon PROTO C :DWORD, :DWORD, :DWORD, :DWORD
 _Timer_new PROTO C :DWORD
 _DrawLine PROTO C :WORD, :WORD, :WORD, :WORD, :DWORD, :DWORD
 _DrawWirePolygon PROTO C :DWORD
@@ -301,6 +302,7 @@ _Print_int PROTO C :DWORD, :DWORD, :DWORD, :DWORD
 PUBLIC _StartEngine
 PUBLIC _SetCoreProc
 PUBLIC _SetWindowTitle
+PUBLIC _SetWindowIcon
 PUBLIC _Timer_new
 PUBLIC _DrawLine
 PUBLIC _SetPixel

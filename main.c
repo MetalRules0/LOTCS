@@ -407,6 +407,8 @@ int main() {
     //load the main level
     make_camera(&viewport, &viewdata, &playerdata);
     _SetWindowTitle("Legacy of the Chaos Soul");
+    _SetWindowIcon(500, 32, 32, 1);
+    _SetWindowIcon(510, 16, 16, 0);
     _Timer_new(20);
     _SetFrameRate(16);
     _SetCoreProc(&gameloop, 1); // function 1 gets called 20 times a second

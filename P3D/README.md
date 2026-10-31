@@ -10,6 +10,11 @@ uint32_t color is stored in this format: `0xFFRRGGBB`, where FF is unused.
 ### Initialization
 `_SetWindowTitle(char* title)`: Sets the title of any windows created. Call at any time to update the main window.
 
+`_SetWindowIcon(int resource, int width, int height, int setLargeIcon)`: Sets the icon of the window. Call at any time to update the main window.
+- Resource is the resource number (from the RC file) of the icon you'd like to use.
+- Width / Height are the Width & Height of the icon.
+- setLargeIcon is true / false. Decides weather to tell Windows to use this icon as a "large" icon.
+
 `_SetCoreProc(void (*funcptr)(), char type)`: Sets one of four functions which P3D will run:
 - Type 1: Runs once every timer tick
 - Type 2: Runs once every frame (set by Framerate)
@@ -26,6 +31,8 @@ uint32_t color is stored in this format: `0xFFRRGGBB`, where FF is unused.
 _SetWindowTitle("LOTCS");
 _Timer_new(20); //Gameloop 20 times per second
 _SetFrameRate(16); //Draw every 16ms
+_SetWindowIcon(500, 32, 32, 1);
+_SetWindowIcon(510, 16, 16, 0);
 _SetCoreProc(&gameloop, 1);
 _SetCoreProc(&videoloop, 2);
 _StartEngine();

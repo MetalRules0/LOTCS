@@ -1,5 +1,3 @@
-500 ICON "mainicon.ico"
-
 600 MENUEX
 BEGIN
 	POPUP "&File"

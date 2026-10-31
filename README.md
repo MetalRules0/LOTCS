@@ -1,5 +1,5 @@
 ### Legacy Of The Chaos Soul
-<img src="wet_dog_hr_3.png" alt="Icon!" width="512" height="512">
+<img src="resources/wet_dog.png" alt="Icon" width="512" height="512">
 
 ###### Check out the [discord server](https://discord.gg/pD3qwdBd4f)!
 

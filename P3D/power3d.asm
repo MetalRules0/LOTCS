@@ -239,13 +239,50 @@ LibMain Endp
 
 
 _SetWindowTitle proc C WindowTitle :DWORD
+
 mov eax, WindowTitle
 mov szDisplayName, eax
 push eax
 push hWnd
 call SetWindowText
 ret
+
 _SetWindowTitle endp
+
+_SetWindowIcon proc C WindowIcon :DWORD, IWidth :DWORD, IHeight :DWORD, SetLargeIcon :DWORD
+
+push ebx
+
+push LR_SHARED
+push IHeight
+push IWidth
+push 1
+push WindowIcon
+push 0
+call LoadImage
+
+mov ebx, eax
+mov eax, SetLargeIcon
+
+test eax, eax
+jz @SmallIcon
+push ebx
+push ICON_BIG
+push WM_SETICON
+push hWnd
+call SendMessage
+
+@SmallIcon:
+push ebx
+push ICON_SMALL
+push WM_SETICON
+push hWnd
+call SendMessage
+
+pop ebx
+ret
+
+_SetWindowIcon endp
 
 
 
