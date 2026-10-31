@@ -76,4 +76,4 @@ _Print_int(40, 24, 38, 0xFFFFFF00); //Displays the number 38
 ```
 
 ### TO DOCUMENT:
-`_UpdateTimer`, `_CheckIfReady`, `_DrawLine`, `_DrawWirePolygon`
+`_UpdateTimer`, `_DrawLine`, `_DrawWirePolygon`

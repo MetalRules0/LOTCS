@@ -47,28 +47,6 @@ ret
 
 _IncrementTimer endp
 
-_CheckIfReady proc
-
-push eax
-push edx
-
-mov eax, TimePassed
-mov edx, MSPerTick
-cmp eax, edx
-ja @lbl1
-
-pop edx
-pop eax
-clc
-ret
-@lbl1:
-
-pop edx
-pop eax
-stc
-ret
-_CheckIfReady endp
-
 _Timer_Reset Proc
 
 xor eax, eax
