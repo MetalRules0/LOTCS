@@ -99,6 +99,16 @@ ret
 
 _GetFrameRate endp
 
+_SetFrameRate Proc C frate:DWORD
+
+push eax
+mov eax, frate
+mov MaxFPS, eax
+pop eax
+ret
+
+_SetFrameRate endp
+
 dummy_ret_1:
 nop
 nop
