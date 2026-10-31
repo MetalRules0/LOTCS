@@ -111,6 +111,8 @@ szText LmTitle,"Power3D"
 push ebx
 push esi
 push edi
+push 1
+call timeBeginPeriod
 call GetProcessHeap
 test eax, eax
 jz @allocerr
@@ -334,7 +336,7 @@ mov al, 1
 ret
 
 @SleepExec:
-push 2
+push 1
 call Sleep
 jmp @lbl3
 

@@ -206,8 +206,8 @@ void videoloop() {
     // text API test: drawn last so it ends up on top of the scene
 	if (debug_toggle == TRUE) {
 		_Print_string(4, 4, "LEGACY OF THE CHAOS SOUL", 0xFFFFFFFF);
-		_Print_string(4, 14, "MS:\nX:\nY:\nZ:", 0xFFFFFF00);
-		_Print_int(6 + 3 * TEXT_CELL_W, 14, _GetFrameRate(), 0xFFFFFF00);
+		_Print_string(4, 14, "FPS:\nX:\nY:\nZ:", 0xFFFFFF00);
+		_Print_int(6 + 4 * TEXT_CELL_W, 14, (int)(1000/_GetFrameRate()), 0xFFFFFF00);
 		_Print_int(6 + 2 * TEXT_CELL_W, 22, (int)playerdata.x, 0xFFFFFF00);
 		_Print_int(6 + 2 * TEXT_CELL_W, 30, (int)playerdata.y, 0xFFFFFF00);
 		_Print_int(6 + 2 * TEXT_CELL_W, 38, (int)playerdata.z, 0xFFFFFF00);
