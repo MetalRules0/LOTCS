@@ -1,13 +1,21 @@
 
 _Timer_new proc C TPS :DWORD
 
+push ecx
+push edx
 mov eax, offset dummy_ret_1
 mov ReadyProc, eax
 mov eax, TPS
 mov TickPerSecond, eax
+mov ecx, eax
+mov eax, 1000 ; ms per second
+div ecx
+mov MSPerTick, eax ; calculates the MS per tick form the ticks per second
 call timeGetTime
 mov TickCount, eax
 mov LastTime, eax
+pop edx
+pop ecx
 ret
 
 _Timer_new endp
