@@ -409,7 +409,7 @@ int main() {
     _SetWindowTitle("Legacy of the Chaos Soul");
     _SetWindowIcon(500, 32, 32, 1);
     _SetWindowIcon(510, 16, 16, 0);
-    _Timer_new(50);
+    _Timer_new(20);
     _SetFrameRate(16);
     _SetCoreProc(&gameloop, 1); // function 1 gets called 20 times a second
     _SetCoreProc(&videoloop, 2); // funtion 2 has no limit to how often it can get called
