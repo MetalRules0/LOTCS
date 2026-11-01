@@ -9,6 +9,7 @@ mov eax, TPS
 mov TickPerSecond, eax
 mov ecx, eax
 mov eax, 1000 ; ms per second
+xor edx, edx ; NEEDED
 div ecx
 mov MSPerTick, eax ; calculates the MS per tick form the ticks per second
 call timeGetTime
