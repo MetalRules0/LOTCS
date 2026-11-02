@@ -1,4 +1,4 @@
-_Draw_Square proc x0 :WORD, y0 :WORD, x1 :WORD, y1 :WORD, color :DWORD
+_Draw_Square proc C x0 :WORD, y0 :WORD, x1 :WORD, y1 :WORD, color :DWORD
 push esi
 push ebx
 push edi
@@ -36,3 +36,27 @@ ret
 
 
 _Draw_Square endp
+
+
+
+_Draw_Triangle_flat proc C WIREFRAME_POLY :DWORD
+
+push eax
+push ebx
+push ecx
+push edx
+push esi
+push edi
+
+;add logic here
+
+pop edi
+pop esi
+pop edx
+pop ecx
+pop ebx
+pop eax
+
+_Draw_Triangle_flat endp
+
+
