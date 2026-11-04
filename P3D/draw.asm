@@ -207,8 +207,29 @@ shl edx, 2
 
 add edi, edx
 
+; get the max values now
 
 
+; get the max x
+
+mov eax, [ebp].px
+mov ebx, [ebp].py
+
+cmp ax, bx
+jb @F ; if bx is less than ax set ax to bx to get the min
+mov ax, bx
+
+@@:
+
+cmp ax, WORD ptr [ebp + 2].pz
+jb @F
+mov ax, WORD ptr [ebp + 2].pz
+
+@@:
+
+movzx DWORD ptr [esp + 32], ax
+
+; get the max y 
 
 @lbl1: ; first loop
 
