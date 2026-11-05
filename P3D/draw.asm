@@ -221,15 +221,31 @@ mov ax, bx
 
 @@:
 
-cmp ax, WORD ptr [ebp + 2].pz
+cmp ax, WORD ptr [ebp].pz
 jb @F
-mov ax, WORD ptr [ebp + 2].pz
+mov ax, WORD ptr [ebp].pz
 
 @@:
 
 movzx DWORD ptr [esp + 32], ax
 
 ; get the max y 
+rol eax, 16
+rol ebx, 16
+
+cmp ax, bx
+jb @F ; if bx is less than ax set ax to bx to get the min
+mov ax, bx
+
+@@:
+
+cmp ax, WORD ptr [ebp + 2].pz
+jb @F
+mov ax, WORD ptr [ebp + 2].pz
+
+@@:
+
+movzx DWORD ptr [esp + 36], ax
 
 @lbl1: ; first loop
 
