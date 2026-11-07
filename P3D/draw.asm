@@ -59,7 +59,55 @@ esp + 16 = e0
 esp + 18 = e1
 esp + 20 = e2
 esp + 22 = area
+
 %
+
+
+;func edge(x, y, xi, yi, dXi, dYi)
+;    return (x - xi)*dYi - (y-yi)*dXi
+;
+;func draw_triangle(x0, y0, x1, y1, x2, y2, v0, v1, v2):
+;    dX0 = x0 - x2
+;    dX1 = x1 - x0
+;    dX2 = x2 - x1
+;    dY0 = y0 - y2
+;    dY1 = y1 - y0
+;    dY2 = y2 - y1
+;    start_x = 0
+;    start_y = 0
+;    e0 = edge(start_x, start_y, x0, y0, dX0, dY0)
+;    e1 = edge(start_x, start_y, x1, y1, dX1, dY1)
+;    e2 = edge(start_x, start_y, x2, y2, dX2, dY2)
+;    area = e0 + e1 + e2
+;    dYV = (dY0*v0 + dY1*v1 + dY2*v2) / area
+;    dXV = (dX0*v0 + dX1*v1 + dX2*v2) / area
+;
+;    v = (e0*v0 + e1*v1 + e2*v2) / area
+;
+;    starting_e0 = e0
+;    starting_e1 = e1
+;    starting_e2 = e2
+;    starting_v = v
+;
+;    for y = 0 to screen_height:
+;        for x = 0 to screen_width:
+;            if(e0 >= 0 && e1 >= 0 && e2 >= 0)
+;                draw_pixel(x, y, v)
+;            e0 = e0 + dY0
+;            e1 = e1 + dY1
+;            e2 = e2 + dY2
+;            v = v + dYV
+;
+;        e0 = starting_e0 - dX0
+;        e1 = starting_e1 - dX1
+;        e2 = starting_e2 - dX2
+;        v = starting_v - dXV
+;
+;        starting_e0 = e0
+;        starting_e1 = e1
+;        starting_e2 = e2
+;        starting_v = v
+
 
 mov ebp, [esp + 8]
 sub esp, 64
