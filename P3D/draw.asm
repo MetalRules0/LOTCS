@@ -15,7 +15,7 @@ push cx ; draw a line
 @lbl2:
 mov ebx, eax
 add ebx, ecx
-mov [esi + ebx], edx
+mov DWORD ptr [esi + ebx], edx
 inc ecx
 cmp cx, x1
 jng @lbl2
@@ -44,7 +44,13 @@ _Draw_Triangle_flat proc C WIREFRAME_POLY :DWORD
 
 ASSUME ebp: PTR WIREPOLY
 
-pushad
+push eax
+push ebx
+push ecx
+push edx
+push esi
+push edi
+push ebp
 
 COMMENT %
 esp = dy0
@@ -210,9 +216,7 @@ mov WORD ptr [esp + 28], si
 ;add logic here
 
 
-mov edi, GdaPtr
-mov edi, [edi + VIDL1]
-mov esi, [ebp.color]
+
 mov eax, [ebp].px
 mov ebx, [ebp].py
 
@@ -264,7 +268,7 @@ mov eax, [ebp].px
 mov ebx, [ebp].py
 
 cmp ax, bx
-jb @F ; if bx is less than ax set ax to bx to get the min
+jb @F ; if bx iss less than ax set ax to bx to get the min
 mov ax, bx
 
 @@:
@@ -275,7 +279,10 @@ mov ax, WORD ptr [ebp].pz
 
 @@:
 
-movzx DWORD ptr [esp + 32], ax
+
+mov WORD ptr [esp + 32], ax
+xor ax, ax
+mov WORD ptr [esp + 34], ax
 
 ; get the max y 
 rol eax, 16
@@ -293,7 +300,12 @@ mov ax, WORD ptr [ebp + 2].pz
 
 @@:
 
-movzx DWORD ptr [esp + 36], ax
+and eax, 0000FFFFh
+mov DWORD ptr [esp + 36], eax
+
+mov edi, GdaPtr
+mov edi, [edi + VIDL1]
+mov esi, [ebp].color
 
 @lbl1: ; first loop
 
@@ -310,6 +322,8 @@ jb @nodraw
 imul eax, ebp, 480
 add eax, ecx
 shl eax, 2
+cmp eax, BYTE_CNT
+ja @nodraw
 mov [edi + eax], esi
 
 ; UNFINISHED(WIP)
@@ -331,7 +345,8 @@ jb @lbl1
 
 add esp, 64
 popad
-ret
+leave
+ret 4
 
 
 edgefunc:
@@ -354,5 +369,73 @@ ret
 
 _Draw_Triangle_flat endp
 
+
+
+_Draw_Vec_Triangle_flat proc C DEPTHPOLY :DWORD
+
+ASSUME ebp: ptr DEPTHPOLY
+push ebp
+mov ebp, [esp + 8] ; get the struct at the proper location
+sub esp, 64
+
+
+
+
+_Draw_Vec_Triangle_flat endp
+
 OPTION PROLOGUE:PrologueDef
 OPTION EPILOGUE:EpilogueDef
+
+Draw_normalise_solid_pixel_line proc length :DWORD 
+
+LOCAL ilength :DWORD
+
+LOCAL fx :DWORD
+LOCAL fy :DWORD
+
+push esi
+mov esi, GdaPtr
+mov esi, [esi + VIDL1]
+
+fld length
+fimul raster_screen_width
+fistp ilength
+fimul raster_screen_width
+mov ecx, ilength
+
+movq  mm1, mm0   
+psllq mm0, 32
+
+
+
+
+pop esi
+ret
+
+
+
+Draw_normalise_solid_pixel_line endp 
+
+_Draw_Pixel_Vec proc C xpos :DWORD, ypos :DWORD
+
+
+push esi
+push edi
+
+mov edi, GdaPtr
+mov edi, [edi + VIDL1]
+
+fld ypos
+fimul raster_screen_height
+fistp ypos
+imul eax, ypos, SCREEN_HEIGHT
+
+
+
+
+pop edi 
+pop esi
+
+ret
+
+_Draw_Pixel_Vec endp  

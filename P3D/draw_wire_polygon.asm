@@ -86,7 +86,7 @@ mov bx, dx
 rol edx, 16
 add bx, dx
 rol edx, 16
-;EdgeFunc proc
+;EdgeFunc proc__declspec(dllimport) _(WirePolygon *polygon);
 
 
 

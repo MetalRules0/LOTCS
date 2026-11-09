@@ -44,6 +44,8 @@ DebugProc     dd 0
 StartupProc   dd 0
 str_misc_data dd 0
 regsave       dd 0
+raster_screen_width dd SCREEN_WIDTH ; used in fpu calculations
+raster_screen_height dd SCREEN_HEIGHT 
 
 ALIGN 4
 TickCount dd 0
@@ -80,7 +82,7 @@ scrdef        dd 00000042h
 engineHeap      dd 0    
 engineStatus    db 0
 ALIGN 4
-infotext      db "Power3D engine version PC.20261031", 0
+infotext      db "Power3D engine version 0.0.1", 0
 discordlnk    db "Our Public Dicord server:", 0Dh, 0Ah, "https://discord.gg/tKYgqtpdcc", 0
 
 ALIGN 4
@@ -727,6 +729,7 @@ include draw_wire_polygon.asm
 include iskeydown.asm
 include sky.asm
 include textapi.asm
+include draw.asm
 
 
 

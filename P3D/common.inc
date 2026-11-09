@@ -189,6 +189,30 @@ m3 DWORD ?
 
 RENDERTILE ENDS 
 
+DEPTHPOLY STRUCT
+
+flags DWORD ?
+color DWORD ?
+scale DWORD ?
+unused DWORD ?
+
+x0 DWORD ?
+y0 DWORD ?
+z0 DWORD ?
+w0 DWORD ?
+
+x1 DWORD ?
+y1 DWORD ?
+z1 DWORD ?
+w1 DWORD ?
+
+x2 DWORD ?
+y2 DWORD ?
+z2 DWORD ?
+w2 DWORD ?
+
+DEPTHPOLY ENDS
+
 CameraInitData STRUCT
 
 flags WORD ?
@@ -297,6 +321,7 @@ _DrawSky PROTO C :DWORD, :DWORD
 _Print_char PROTO C :DWORD, :DWORD, :DWORD, :DWORD
 _Print_string PROTO C :DWORD, :DWORD, :DWORD, :DWORD
 _Print_int PROTO C :DWORD, :DWORD, :DWORD, :DWORD
+_Draw_Triangle_flat PROTO C :DWORD
 
 
 PUBLIC _StartEngine
@@ -312,3 +337,4 @@ PUBLIC _DrawSky
 PUBLIC _Print_char
 PUBLIC _Print_string
 PUBLIC _Print_int
+PUBLIC _Draw_Triangle_flat
