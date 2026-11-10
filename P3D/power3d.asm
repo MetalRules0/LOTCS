@@ -10,7 +10,6 @@ include C:\masm32\include\kernel32.inc
 include C:\masm32\include\user32.inc
 include C:\masm32\include\gdi32.inc
 include C:\masm32\include\winmm.inc
-include C:\masm32\fpulib\fpu.inc
 include C:\masm32\m32lib\masm32.inc
 include common.inc
 include gda_layout.inc
@@ -19,7 +18,6 @@ includelib C:\masm32\lib\kernel32.lib
 includelib C:\masm32\lib\user32.lib
 includelib C:\masm32\lib\gdi32.lib
 includelib C:\masm32\lib\winmm.lib
-includelib C:\masm32\fpulib\fpu.lib
 includelib C:\masm32\m32lib\masm32.lib
 
 
@@ -731,25 +729,14 @@ include sky.asm
 include textapi.asm
 include draw.asm
 
-
-
-
-call FpuAdd
-call FpuSub
-call FpuMul
-call FpuDiv
-call FpuComp
-
- NOP
- NOP
- NOP
- NOP
- NOP
- NOP
- NOP
- NOP
- 
-
+NOP
+NOP
+NOP
+NOP
+NOP
+NOP
+NOP
+NOP
 
 ; ########################################################################
 
