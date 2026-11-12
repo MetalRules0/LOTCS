@@ -302,6 +302,31 @@ test eax, eax
 
 ENDM
 
+min MACRO reg1, reg2, arg3
+
+cmp reg1, reg2
+jae @F
+mov reg1, reg2
+@@:
+cmp reg1, arg3
+jae @F
+mov reg1, arg3
+@@:
+
+ENDM
+
+max MACRO reg1, reg2, arg3
+
+cmp reg1, reg2
+jb @F
+mov reg1, reg2
+@@:
+cmp reg1, arg3
+jb @F
+mov reg1, arg3
+@@:
+
+ENDM
 
 ;=================
 ; Local prototypes
